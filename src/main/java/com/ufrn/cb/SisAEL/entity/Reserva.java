@@ -1,73 +1,77 @@
 package com.ufrn.cb.SisAEL.entity;
 
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="reserva")
+@Table(name="reservas")
 public class Reserva {
 	
 	@Id
-	@Column(name="idReserva")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="idEquip")
-	private Long idEquip;
+	@OneToMany(mappedBy = "id_equipamento")
+	private List<Equipamento> equipamentos;
 	
-	@Column(name="matPesquisador")
-	private Long matPesquisador;
+	@Column(name="id_pesquisador")
+	@ManyToOne
+	private Pesquisador pesquisador;
 	
-	@Column(name="data")
-	private String data;
-	
-	public Reserva() {
-		super();
-	}
+	@Column(name="id_horario_das_reservas")
+	@OneToOne
+	private HorarioDaReserva horarioDaReserva;
 
-	public Reserva(Long idReserva, Long idEquip, Long matPesquisador, String data) {
-		super();
-		this.id = idReserva;
-		this.idEquip = idEquip;
-		this.matPesquisador = matPesquisador;
-		this.data = data;
-	}
-
-	public Long getIdReserva() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setIdReserva(Long idReserva) {
-		this.id = idReserva;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getIdEquip() {
-		return idEquip;
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
 	}
 
-	public void setIdEquip(Long idEquip) {
-		this.idEquip = idEquip;
+	public void setEquipamentos(List<Equipamento> equipamentos) {
+		this.equipamentos = equipamentos;
 	}
 
-	public Long getMatPesquisador() {
-		return matPesquisador;
+	public Pesquisador getPesquisador() {
+		return pesquisador;
 	}
 
-	public void setMatPesquisador(Long matPesquisador) {
-		this.matPesquisador = matPesquisador;
+	public void setPesquisador(Pesquisador pesquisador) {
+		this.pesquisador = pesquisador;
 	}
 
-	public String getData() {
-		return data;
+	public HorarioDaReserva getHorarioDaReserva() {
+		return horarioDaReserva;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public void setHorarioDaReserva(HorarioDaReserva horarioDaReserva) {
+		this.horarioDaReserva = horarioDaReserva;
 	}
+	
+	
+	
+	
+	
+	
+
+
 	
 	
 	

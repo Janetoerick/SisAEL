@@ -8,11 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tecnico")
+@Table(name="tecnicos")
 public class Tecnico {
 	
 	@Id
-	@Column(name="idTec")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
@@ -25,61 +24,5 @@ public class Tecnico {
 	@Column(name="senha")
 	private String senha;
 		
-	
-	public Tecnico() {
-		super();
-	}
-	
-	
-	public Tecnico(Long id, String nome, String login, String senha) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.login = login;
-		this.senha = senha;
-	}
-
-
-
-
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-
-	public String getNome() {
-		return nome;
-	}
-
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-
-	public String getLogin() {
-		return login;
-	}
-
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-
-	public String getSenha() {
-		return senha;
-	}
-
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 		
 }
