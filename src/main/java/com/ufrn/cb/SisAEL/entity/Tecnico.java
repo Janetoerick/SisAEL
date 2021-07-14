@@ -55,7 +55,7 @@ public class Tecnico {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-		
+
 	
 		
 }
