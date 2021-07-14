@@ -1,4 +1,4 @@
-package com.ufrn.cb.SisAEL.entidades;
+package com.ufrn.cb.SisAEL.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
