@@ -2,28 +2,28 @@ package com.ufrn.cb.SisAEL.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pesquisador")
+@Table(name="pesquisadores")
 public class Pesquisador {
-	
 	@Id
-	@Column(name="matricula")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private Long matricula;
 	
-	@Column(name="nome")
 	private String nome;
 
-	public Pesquisador() {
-		super();
+	public Long getId() {
+		return id;
 	}
 
-	public Pesquisador(Long matricula, String nome) {
-		super();
-		this.matricula = matricula;
-		this.nome = nome;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getMatricula() {
@@ -41,8 +41,9 @@ public class Pesquisador {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	
-	
-	
+
+
 	
 }
