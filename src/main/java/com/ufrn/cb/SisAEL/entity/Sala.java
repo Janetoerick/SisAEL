@@ -1,37 +1,28 @@
 package com.ufrn.cb.SisAEL.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="sala")
+@Table(name="salas")
 public class Sala {
 	
 	@Id
-	@Column(name="idSala")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="idLab")
-	private Long idLab;
-	
 	@Column(name="nome")
 	private String nome;
-
-	public Sala() {
-		super();
-	}
-
-	public Sala(Long id, Long lab, String nome) {
-		super();
-		this.id = id;
-		this.idLab = lab;
-		this.nome = nome;
-	}
+	
+	@OneToMany(mappedBy = "id_equipamento")
+	public List<Equipamento> equipamentos;
 
 	public Long getId() {
 		return id;
@@ -41,14 +32,6 @@ public class Sala {
 		this.id = id;
 	}
 
-	public Long getLab() {
-		return idLab;
-	}
-
-	public void setLab(Long lab) {
-		this.idLab = lab;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -56,6 +39,15 @@ public class Sala {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
+
+	public void setEquipamentos(List<Equipamento> equipamentos) {
+		this.equipamentos = equipamentos;
+	}
+
 	
 	
 }
