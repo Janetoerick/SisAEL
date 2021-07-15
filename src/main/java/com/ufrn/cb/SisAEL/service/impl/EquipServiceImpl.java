@@ -14,13 +14,13 @@ import com.ufrn.cb.SisAEL.repository.EquipRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
 import com.ufrn.cb.SisAEL.service.EquipService;
 
-@Service
+//@Service
 public class EquipServiceImpl implements EquipService {
 
 	private EquipRepository repository;
 	private SalaRepository repoSala;
 
-	@Autowired
+	//@Autowired
 	public EquipServiceImpl(EquipRepository repository, SalaRepository repoSala) {
 		super();
 		this.repository = repository;
@@ -29,7 +29,8 @@ public class EquipServiceImpl implements EquipService {
 
 	@Override
 	public List<Equipamento> listarEquipSala(Long idSala) {
-		return repository.findByidSala(idSala);
+		//return repository.findByidSala(idSala);
+		return null;
 	}
 
 	@Override
@@ -65,12 +66,14 @@ public class EquipServiceImpl implements EquipService {
 
 	@Override
 	public List<Equipamento> listarPorNome(String nome) {
-		return repository.findByNomeContains(nome);
+		//return repository.findByNomeContains(nome);
+		return null;
 	}
 
 	@Override
 	public List<Equipamento> listarPorIdSala(Long idSala) {
-		return repository.findByidSala(idSala);
+		//return repository.findByidSala(idSala);
+		return null;
 	}
 
 	@Override
@@ -79,7 +82,8 @@ public class EquipServiceImpl implements EquipService {
 	}
 
 	private boolean verificaEquipamento(Equipamento equip) {
-		Optional<Sala> sala = repoSala.findById(equip.getIdSala());
+		//Optional<Sala> sala = repoSala.findById(equip.getIdSala());
+		Optional<Sala> sala = null;
 
 		if (sala.isEmpty()) {
 			throw new ErroNaoExisteRegistroNoBD("Sala fornecida para alocação do equipamento não existe");

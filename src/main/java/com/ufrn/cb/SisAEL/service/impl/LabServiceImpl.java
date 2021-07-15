@@ -12,12 +12,12 @@ import com.ufrn.cb.SisAEL.exception.ErroNaoExisteRegistroNoBD;
 import com.ufrn.cb.SisAEL.repository.LabRepository;
 import com.ufrn.cb.SisAEL.service.LabService;
 
-@Service
+//@Service
 public class LabServiceImpl implements LabService{
 	
 	private LabRepository repository;
 		
-	@Autowired
+	//@Autowired
 	public LabServiceImpl(LabRepository repository) {
 		super();
 		this.repository = repository;

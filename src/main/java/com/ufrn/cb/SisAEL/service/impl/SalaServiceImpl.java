@@ -15,14 +15,14 @@ import com.ufrn.cb.SisAEL.repository.LabRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
 import com.ufrn.cb.SisAEL.service.SalaService;
 
-@Service
+//@Service
 public class SalaServiceImpl implements SalaService {
 	
 	SalaRepository repository;
 	LabRepository labs;
 	EquipRepository equips;
 	
-	@Autowired
+	//@Autowired
 	public SalaServiceImpl(SalaRepository repository, LabRepository labs, EquipRepository equips) {
 		super();
 		this.repository = repository;
@@ -39,7 +39,7 @@ public class SalaServiceImpl implements SalaService {
 		}
 		
 		if(lab.isPresent()) {
-			sala.setLab(idLab);
+			//sala.setLab(idLab);
 			return repository.save(sala);
 		}	
 		
@@ -49,7 +49,7 @@ public class SalaServiceImpl implements SalaService {
 	@Override
 	public Optional<Sala> atualizar(Sala sala) {
 		Optional<Sala> salaUp = repository.findById(sala.getId());
-		Optional<Laboratorio> lab = labs.findById(sala.getLab());
+		Optional<Laboratorio> lab = null;//labs.findById(sala.getLab());
 		
 		
 		if(sala.getNome().isEmpty() || sala.getNome().length()<3){
@@ -98,7 +98,8 @@ public class SalaServiceImpl implements SalaService {
 
 	@Override
 	public List<Sala> obterPorLab(Long lab) {
-		return repository.findByidLab(lab);
+		return null;
+		//return repository.findByidLab(lab);
 	}
 	
 }

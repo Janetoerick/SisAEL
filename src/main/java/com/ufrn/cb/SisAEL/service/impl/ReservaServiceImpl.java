@@ -14,12 +14,12 @@ import com.ufrn.cb.SisAEL.enums.Horarios;
 import com.ufrn.cb.SisAEL.repository.ReservaRepository;
 import com.ufrn.cb.SisAEL.service.ReservaService;
 
-@Service
+//@Service
 public class ReservaServiceImpl implements ReservaService{
 	
 	private ReservaRepository repository;
 	
-	@Autowired	
+	//@Autowired	
 	public ReservaServiceImpl(ReservaRepository repository) {
 		super();
 		this.repository = repository;
