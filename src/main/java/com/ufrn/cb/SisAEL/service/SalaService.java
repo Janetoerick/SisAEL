@@ -11,4 +11,5 @@ public interface SalaService {
 	boolean deletar(Sala sala);
 	List<Sala> obtertodos();
 	Optional<Sala> obterPorId(Long id);
+	List<Sala> obterPorLab(Long lab);
 }
