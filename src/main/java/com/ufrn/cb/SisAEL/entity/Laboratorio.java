@@ -21,7 +21,8 @@ public class Laboratorio {
 	
 	private String nome;
 	
-	@OneToMany(mappedBy = "id_sala")
+	@OneToMany
+	@JoinColumn(name="id_sala")
 	private List<Sala> salas;
 
 	public Long getId() {

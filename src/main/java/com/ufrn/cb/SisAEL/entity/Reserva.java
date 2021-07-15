@@ -1,8 +1,6 @@
 package com.ufrn.cb.SisAEL.entity;
 
-
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,15 +20,16 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy = "id_equipamento")
+	@OneToMany
+	@JoinColumn(name="id_equipamento")
 	private List<Equipamento> equipamentos;
 	
-	@Column(name="id_pesquisador")
 	@ManyToOne
+	@JoinColumn(name = "id_pesquisador")
 	private Pesquisador pesquisador;
 	
-	@Column(name="id_horario_das_reservas")
 	@OneToOne
+	@JoinColumn(name="id_horario_da_reserva")
 	private HorarioDaReserva horarioDaReserva;
 
 	public Long getId() {

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +22,8 @@ public class Sala {
 	@Column(name="nome")
 	private String nome;
 	
-	@OneToMany(mappedBy = "id_equipamento")
+	@OneToMany
+	@JoinColumn(name="id_equipamento")
 	public List<Equipamento> equipamentos;
 
 	public Long getId() {
