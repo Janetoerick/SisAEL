@@ -7,26 +7,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("laboratorios")
-public class LaboratorioController {
+@RequestMapping("horarios")
+public class HorarioController {
 	
 	@Autowired
-	FachadaService fachada;
+	private FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<Laboratorio> cadastrar(@RequestBody Laboratorio lab){
-		
-
-		return ResponseEntity.ok(fachada.cadastrarLaboratorio(lab));
+	public ResponseEntity<HorarioDaReserva> cadastrarHorario(@RequestBody HorarioDaReserva horario) {
 		
 		
+		
+		return ResponseEntity.ok(fachada.cadastrarHorario(horario));
 		
 	}
-	
-	
 
 }

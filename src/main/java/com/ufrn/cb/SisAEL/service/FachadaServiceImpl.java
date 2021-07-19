@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Equipamento;
+import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 
 
@@ -16,6 +17,9 @@ public class FachadaServiceImpl implements FachadaService{
 	@Autowired
 	LaboratorioService labService;
 	
+	@Autowired
+	HorariosService horarioService;
+	
 	@Override
 	public Equipamento cadastrarEquipamento(Equipamento equipamento) {
 		return equipService.cadastrarEquipamento(equipamento);
@@ -25,6 +29,12 @@ public class FachadaServiceImpl implements FachadaService{
 	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio) {
 		
 		return labService.cadastrar(laboratorio);
+	}
+
+	@Override
+	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario) {
+		
+		return horarioService.cadastrar(horario);
 	}
 
 }

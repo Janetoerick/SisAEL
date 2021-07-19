@@ -4,11 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Equipamento;
+import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Sala;
 import com.ufrn.cb.SisAEL.repository.EquipRepository;
 import com.ufrn.cb.SisAEL.repository.LabRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
+import com.ufrn.cb.SisAEL.repository.HorariosDaReservaRepository;
 
 @Service
 public class FachadaDadosImp implements FachadaDados {
@@ -21,6 +23,9 @@ public class FachadaDadosImp implements FachadaDados {
 	
 	@Autowired
 	SalaRepository salaRepository;
+	
+	@Autowired
+	HorariosDaReservaRepository horarioRepository;
 	
 	@Override
 	public Equipamento salvarEquipamento(Equipamento equipamento) {
@@ -43,6 +48,12 @@ public class FachadaDadosImp implements FachadaDados {
 	public Sala salvarSala(Sala sala) {
 		
 		return salaRepository.save(sala);
+	}
+
+	@Override
+	public HorarioDaReserva salvarHorario(HorarioDaReserva horario) {
+		HorarioDaReserva repository = horarioRepository.save(horario);
+		return repository;
 	}
 
 }
