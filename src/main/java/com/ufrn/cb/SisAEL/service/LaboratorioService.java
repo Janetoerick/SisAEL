@@ -4,18 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
-import com.ufrn.cb.SisAEL.entity.Sala;
+import com.ufrn.cb.SisAEL.entity.Laboratorio;
 
 @Service
-public class SalaService {
+public class LaboratorioService {
 	
 	@Autowired
 	FachadaDados fachada;
 	
-	public Sala cadastrar(Sala sala) {
+	public Laboratorio cadastrar(Laboratorio lab) {
 		
-		return fachada.salvarSala(sala);
-		
+		return fachada.salvarLaboratorio(lab);
 	}
+	
 
 }

@@ -2,7 +2,7 @@ package com.ufrn.cb.SisAEL.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +21,7 @@ public class Laboratorio {
 	
 	private String nome;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="id_sala")
 	private List<Sala> salas;
 
