@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.dados;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +56,12 @@ public class FachadaDadosImp implements FachadaDados {
 	public HorarioDaReserva salvarHorario(HorarioDaReserva horario) {
 		HorarioDaReserva repository = horarioRepository.save(horario);
 		return repository;
+	}
+
+	@Override
+	public List<HorarioDaReserva> listarHorarios() {
+		
+		return horarioRepository.findAll();
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.dados;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Equipamento;
@@ -17,5 +19,7 @@ public interface FachadaDados {
 	public Sala salvarSala(Sala sala);
 	
 	public HorarioDaReserva salvarHorario(HorarioDaReserva horario);
+	
+	public List<HorarioDaReserva> listarHorarios();
 
 }

@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +37,12 @@ public class FachadaServiceImpl implements FachadaService{
 	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario) {
 		
 		return horarioService.cadastrar(horario);
+	}
+
+	@Override
+	public List<HorarioDaReserva> listarHorarios() {
+		
+		return horarioService.listarHorarios();
 	}
 
 }
