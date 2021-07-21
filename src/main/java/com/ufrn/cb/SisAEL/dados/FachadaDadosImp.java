@@ -64,4 +64,12 @@ public class FachadaDadosImp implements FachadaDados {
 		return horarioRepository.findAll();
 	}
 
+	@Override
+	public void deletarHorarioDaReserva(long id) {
+		
+		horarioRepository.deleteById(id);
+	}
+	
+	
+
 }

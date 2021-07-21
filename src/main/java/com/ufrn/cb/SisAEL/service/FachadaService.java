@@ -16,6 +16,7 @@ public interface FachadaService {
 	
 	public List<HorarioDaReserva> listarHorarios();
 	
+	public void deletarHorarioDaReserva(long id);
 	
 
 }

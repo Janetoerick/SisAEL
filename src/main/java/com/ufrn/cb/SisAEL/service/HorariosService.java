@@ -27,6 +27,10 @@ public class HorariosService {
 		return fachada.listarHorarios();
 	}
 	
+	public void deletarHorario(long id) {
+		
+		fachada.deletarHorarioDaReserva(id);
+	}
 	
 
 }

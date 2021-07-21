@@ -45,4 +45,12 @@ public class FachadaServiceImpl implements FachadaService{
 		return horarioService.listarHorarios();
 	}
 
+	@Override
+	public void deletarHorarioDaReserva(long id) {
+		
+		horarioService.deletarHorario(id);
+		
+	}
+	
+
 }

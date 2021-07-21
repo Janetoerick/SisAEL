@@ -21,5 +21,7 @@ public interface FachadaDados {
 	public HorarioDaReserva salvarHorario(HorarioDaReserva horario);
 	
 	public List<HorarioDaReserva> listarHorarios();
+	
+	public void deletarHorarioDaReserva(long id);
 
 }
