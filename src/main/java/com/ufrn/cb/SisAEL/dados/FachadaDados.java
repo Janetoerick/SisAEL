@@ -14,6 +14,8 @@ public interface FachadaDados {
 	
 	public Equipamento salvarEquipamento(Equipamento equipamento);
 	
+	public List<Equipamento> listarEquipamentos();
+	
 	public Laboratorio salvarLaboratorio(Laboratorio laboratorio);
 	
 	public Sala salvarSala(Sala sala);
@@ -23,5 +25,7 @@ public interface FachadaDados {
 	public List<HorarioDaReserva> listarHorarios();
 	
 	public void deletarHorarioDaReserva(long id);
+	
+	
 
 }

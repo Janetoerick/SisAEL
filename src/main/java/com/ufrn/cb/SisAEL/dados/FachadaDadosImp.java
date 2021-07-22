@@ -34,9 +34,12 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		Equipamento eq = equipamentoRep.save(equipamento);
 		return eq;
+	}
+	
+	@Override
+	public List<Equipamento> listarEquipamentos() {
 		
-		
-		
+		return equipamentoRep.findAll();
 	}
 
 	@Override
@@ -69,7 +72,5 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		horarioRepository.deleteById(id);
 	}
-	
-	
 
 }

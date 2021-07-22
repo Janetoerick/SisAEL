@@ -10,6 +10,8 @@ public interface FachadaService {
 	
 	public Equipamento cadastrarEquipamento(Equipamento equipamento);
 	
+	public List<Equipamento> listarEquipamentos();
+	
 	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio);
 	
 	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario);

@@ -26,6 +26,12 @@ public class FachadaServiceImpl implements FachadaService{
 	public Equipamento cadastrarEquipamento(Equipamento equipamento) {
 		return equipService.cadastrarEquipamento(equipamento);
 	}
+	
+	@Override
+	public List<Equipamento> listarEquipamentos() {
+		
+		return equipService.listar();
+	}
 
 	@Override
 	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio) {
@@ -51,6 +57,8 @@ public class FachadaServiceImpl implements FachadaService{
 		horarioService.deletarHorario(id);
 		
 	}
+
+	
 	
 
 }

@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,10 @@ public class EquipamentoService {
 		//Uma futura lógica tem que ser colocada aqui
 		
 		return fachada.salvarEquipamento(equip);
+	}
+	
+	public List<Equipamento> listar(){
+		
+		return fachada.listarEquipamentos();
 	}
 }
