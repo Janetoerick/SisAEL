@@ -38,6 +38,12 @@ public class FachadaServiceImpl implements FachadaService{
 		
 		return labService.cadastrar(laboratorio);
 	}
+	
+	@Override
+	public List<Laboratorio> listarLaboratorios() {
+		// TODO Auto-generated method stub
+		return labService.listar();
+	}
 
 	@Override
 	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario) {
@@ -57,6 +63,8 @@ public class FachadaServiceImpl implements FachadaService{
 		horarioService.deletarHorario(id);
 		
 	}
+
+	
 
 	
 	

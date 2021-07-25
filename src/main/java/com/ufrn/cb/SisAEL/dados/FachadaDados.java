@@ -18,6 +18,8 @@ public interface FachadaDados {
 	
 	public Laboratorio salvarLaboratorio(Laboratorio laboratorio);
 	
+	public List<Laboratorio> listarLaboratorios();
+	
 	public Sala salvarSala(Sala sala);
 	
 	public HorarioDaReserva salvarHorario(HorarioDaReserva horario);

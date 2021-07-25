@@ -14,6 +14,8 @@ public interface FachadaService {
 	
 	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio);
 	
+	public List<Laboratorio> listarLaboratorios();
+	
 	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario);
 	
 	public List<HorarioDaReserva> listarHorarios();

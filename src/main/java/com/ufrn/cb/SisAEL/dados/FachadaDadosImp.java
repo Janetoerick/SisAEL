@@ -48,6 +48,13 @@ public class FachadaDadosImp implements FachadaDados {
 		Laboratorio lab = laboratorioRep.save(laboratorio);
 		return lab;
 	}
+	
+	@Override
+	public List<Laboratorio> listarLaboratorios() {
+		
+		List<Laboratorio> labs = laboratorioRep.findAll();
+		return labs;
+ 	}
 
 	@Override
 	public Sala salvarSala(Sala sala) {
@@ -72,5 +79,6 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		horarioRepository.deleteById(id);
 	}
+
 
 }

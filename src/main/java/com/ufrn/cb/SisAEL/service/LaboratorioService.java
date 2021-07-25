@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +19,9 @@ public class LaboratorioService {
 		return fachada.salvarLaboratorio(lab);
 	}
 	
+	public List<Laboratorio> listar(){
+		
+		return fachada.listarLaboratorios();
+	}
 
 }
