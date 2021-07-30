@@ -1,14 +1,14 @@
 package com.ufrn.cb.SisAEL.entity;
 
+import java.time.LocalDate;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,9 +20,9 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinColumn(name="id_equipamento")
-	private List<Equipamento> equipamentos;
+	private List<ItemEquipamento> equipamentos;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_pesquisador")
@@ -31,7 +31,17 @@ public class Reserva {
 	@OneToOne
 	@JoinColumn(name="id_horario_da_reserva")
 	private HorarioDaReserva horarioDaReserva;
+	
+	@ManyToOne
+	@JoinColumn(name="id_laboratorio")
+	private Laboratorio laboratorio;
 
+	@ManyToOne
+	@JoinColumn(name="id_sala")
+	private Sala sala;
+	
+	private LocalDate data;
+	
 	public Long getId() {
 		return id;
 	}
@@ -40,11 +50,11 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public List<Equipamento> getEquipamentos() {
+	public List<ItemEquipamento> getEquipamentos() {
 		return equipamentos;
 	}
 
-	public void setEquipamentos(List<Equipamento> equipamentos) {
+	public void setEquipamentos(List<ItemEquipamento> equipamentos) {
 		this.equipamentos = equipamentos;
 	}
 
@@ -62,6 +72,30 @@ public class Reserva {
 
 	public void setHorarioDaReserva(HorarioDaReserva horarioDaReserva) {
 		this.horarioDaReserva = horarioDaReserva;
+	}
+
+	public Laboratorio getLaboratorio() {
+		return laboratorio;
+	}
+
+	public void setLaboratorio(Laboratorio laboratorio) {
+		this.laboratorio = laboratorio;
+	}
+
+	public Sala getSala() {
+		return sala;
+	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
 	}
 	
 	

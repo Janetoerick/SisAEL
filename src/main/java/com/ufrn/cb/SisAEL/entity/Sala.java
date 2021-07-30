@@ -1,15 +1,10 @@
 package com.ufrn.cb.SisAEL.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +18,6 @@ public class Sala {
 	@Column(name="nome")
 	private String nome;
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="id_equipamento")
-	public List<Equipamento> equipamentos;
 
 	public Long getId() {
 		return id;
@@ -43,13 +35,7 @@ public class Sala {
 		this.nome = nome;
 	}
 
-	public List<Equipamento> getEquipamentos() {
-		return equipamentos;
-	}
 
-	public void setEquipamentos(List<Equipamento> equipamentos) {
-		this.equipamentos = equipamentos;
-	}
 
 	
 	

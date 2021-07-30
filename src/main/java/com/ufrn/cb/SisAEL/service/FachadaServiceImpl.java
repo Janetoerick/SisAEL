@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
+import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 
 
@@ -32,11 +33,23 @@ public class FachadaServiceImpl implements FachadaService{
 		
 		return equipService.listar();
 	}
+	
+	@Override
+	public ItemEquipamento cadastrarItemEquipamento(ItemEquipamento item) {
+		// TODO Auto-generated method stub
+		return equipService.cadastrarItemEquipamento(item);
+	}
 
 	@Override
 	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio) {
 		
 		return labService.cadastrar(laboratorio);
+	}
+	
+	@Override
+	public List<ItemEquipamento> listarItensEquipamento(){
+		
+		return equipService.listarItensEquipamento();
 	}
 	
 	@Override
@@ -63,6 +76,18 @@ public class FachadaServiceImpl implements FachadaService{
 		horarioService.deletarHorario(id);
 		
 	}
+
+	@Override
+	public Equipamento atualizarEquipamento(Equipamento equipamento) {
+		
+		return equipService.atualizarEquipamento(equipamento);
+	}
+
+
+	
+	
+
+	
 
 	
 

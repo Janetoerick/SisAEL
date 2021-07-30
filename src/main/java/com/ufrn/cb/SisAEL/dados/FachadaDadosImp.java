@@ -1,18 +1,20 @@
 package com.ufrn.cb.SisAEL.dados;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
+import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Sala;
 import com.ufrn.cb.SisAEL.repository.EquipRepository;
 import com.ufrn.cb.SisAEL.repository.LabRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
 import com.ufrn.cb.SisAEL.repository.HorariosDaReservaRepository;
+import com.ufrn.cb.SisAEL.repository.ItemEquipamentoRepository;
 
 @Service
 public class FachadaDadosImp implements FachadaDados {
@@ -29,6 +31,17 @@ public class FachadaDadosImp implements FachadaDados {
 	@Autowired
 	HorariosDaReservaRepository horarioRepository;
 	
+	@Autowired
+	ItemEquipamentoRepository itemEquipRep;
+	
+	@Override
+	public Equipamento obterEquipamentoPorId(long id) {
+		
+		Optional<Equipamento> o =  equipamentoRep.findById(id);
+		return o.get();
+	}
+	
+	
 	@Override
 	public Equipamento salvarEquipamento(Equipamento equipamento) {
 		
@@ -40,6 +53,18 @@ public class FachadaDadosImp implements FachadaDados {
 	public List<Equipamento> listarEquipamentos() {
 		
 		return equipamentoRep.findAll();
+	}
+	
+	@Override
+	public ItemEquipamento salvarItemEquipamento(ItemEquipamento item) {
+		
+		return itemEquipRep.save(item);
+	}
+	
+	@Override
+	public List<ItemEquipamento> listarItensEquipamentos(){
+		
+		return itemEquipRep.findAll();
 	}
 
 	@Override
@@ -79,6 +104,33 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		horarioRepository.deleteById(id);
 	}
+
+	@Override
+	public Equipamento atualizarEquipamento(Equipamento equipamento) {
+		
+		return equipamentoRep.save(equipamento);
+	}
+
+
+	@Override
+	public void atualizarNomeEquipamento(long id, String nome) {
+		
+		equipamentoRep.atualizarNome(id, nome);
+		
+	}
+
+
+	@Override
+	public void atualizarQuantidadeEquipamento(long id, int quantidade) {
+		equipamentoRep.atualizarQuantidade(id, quantidade);
+		
+	}
+	
+	
+	
+	
+
+	
 
 
 }

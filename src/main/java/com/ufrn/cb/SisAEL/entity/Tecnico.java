@@ -18,8 +18,7 @@ public class Tecnico {
 	@Column(name="nome")
 	private String nome;
 	
-	@Column(name="login")
-	private String login;
+	private String nomeUsuario;
 	
 	@Column(name="senha")
 	private String senha;
@@ -41,11 +40,11 @@ public class Tecnico {
 	}
 
 	public String getLogin() {
-		return login;
+		return nomeUsuario;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setLogin(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
 	public String getSenha() {

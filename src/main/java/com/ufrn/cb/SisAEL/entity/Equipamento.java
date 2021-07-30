@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,11 +17,10 @@ public class Equipamento {
 	private Long id;
 	
 	
-	@Column(name="tombamento")
-	private Long tombamento;
-	
-	@Column(name = "nome")
+	@Column(name = "nome", unique = true, nullable=false)
 	private String nome;
+	
+	private int quantidade;
 
 	public Long getId() {
 		return id;
@@ -33,15 +30,8 @@ public class Equipamento {
 		this.id = id;
 	}
 
+
 	
-	public Long getTombamento() {
-		return tombamento;
-	}
-
-	public void setTombamento(Long tombamento) {
-		this.tombamento = tombamento;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -50,6 +40,15 @@ public class Equipamento {
 		this.nome = nome;
 	}
 
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	
 	
 	
 	
