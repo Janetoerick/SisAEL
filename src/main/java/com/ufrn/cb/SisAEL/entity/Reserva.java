@@ -28,7 +28,7 @@ public class Reserva {
 	@JoinColumn(name = "id_pesquisador")
 	private Pesquisador pesquisador;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="id_horario_da_reserva")
 	private HorarioDaReserva horarioDaReserva;
 	

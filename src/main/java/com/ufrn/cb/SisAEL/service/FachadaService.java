@@ -6,10 +6,13 @@ import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Reserva;
 
 public interface FachadaService {
 	
 	public Equipamento cadastrarEquipamento(Equipamento equipamento);
+	
+	public Reserva cadastrarReserva(Reserva reserva);
 	
 	public List<Equipamento> listarEquipamentos();
 	
@@ -21,6 +24,8 @@ public interface FachadaService {
 	
 	public List<ItemEquipamento> listarItensEquipamento();
 	
+	public List<Reserva> listarReservas();
+	
 	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario);
 	
 	public List<HorarioDaReserva> listarHorarios();
@@ -28,6 +33,8 @@ public interface FachadaService {
 	public void deletarHorarioDaReserva(long id);
 	
 	public Equipamento atualizarEquipamento(Equipamento equipamento);
+	
+	
 	
 
 }

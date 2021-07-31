@@ -9,9 +9,11 @@ import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.entity.Sala;
 import com.ufrn.cb.SisAEL.repository.EquipRepository;
 import com.ufrn.cb.SisAEL.repository.LabRepository;
+import com.ufrn.cb.SisAEL.repository.ReservaRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
 import com.ufrn.cb.SisAEL.repository.HorariosDaReservaRepository;
 import com.ufrn.cb.SisAEL.repository.ItemEquipamentoRepository;
@@ -33,6 +35,9 @@ public class FachadaDadosImp implements FachadaDados {
 	
 	@Autowired
 	ItemEquipamentoRepository itemEquipRep;
+	
+	@Autowired
+	ReservaRepository reservaRep;
 	
 	@Override
 	public Equipamento obterEquipamentoPorId(long id) {
@@ -72,6 +77,13 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		Laboratorio lab = laboratorioRep.save(laboratorio);
 		return lab;
+	}
+	
+	@Override
+	public Reserva salvarReserva(Reserva reserva) {
+		
+		Reserva r = reservaRep.save(reserva);
+		return r;
 	}
 	
 	@Override
@@ -125,6 +137,16 @@ public class FachadaDadosImp implements FachadaDados {
 		equipamentoRep.atualizarQuantidade(id, quantidade);
 		
 	}
+
+
+	@Override
+	public List<Reserva> listarReservas() {
+		
+		return reservaRep.findAll();
+	}
+
+
+	
 	
 	
 	
