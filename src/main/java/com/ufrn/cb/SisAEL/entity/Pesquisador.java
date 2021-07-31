@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,12 @@ public class Pesquisador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique = true, nullable = false)
 	private Long matricula;
 	
 	private String nome;
+	
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -39,6 +43,14 @@ public class Pesquisador {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

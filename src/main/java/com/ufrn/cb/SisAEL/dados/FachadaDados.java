@@ -8,6 +8,7 @@ import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.entity.Sala;
 
@@ -17,6 +18,8 @@ public interface FachadaDados {
 	public Equipamento obterEquipamentoPorId(long id);
 	
 	public Equipamento salvarEquipamento(Equipamento equipamento);
+	
+	public Pesquisador salvarPesquisador(Pesquisador pesquisador);
 	
 	public ItemEquipamento salvarItemEquipamento(ItemEquipamento item);
 	
@@ -45,6 +48,7 @@ public interface FachadaDados {
 	public void atualizarNomeEquipamento(long id, String nome);
 	
 	public void atualizarQuantidadeEquipamento(long id, int quantidade);
+	
 	
 	
 	

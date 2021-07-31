@@ -9,10 +9,12 @@ import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.entity.Sala;
 import com.ufrn.cb.SisAEL.repository.EquipRepository;
 import com.ufrn.cb.SisAEL.repository.LabRepository;
+import com.ufrn.cb.SisAEL.repository.PesquisadorRepository;
 import com.ufrn.cb.SisAEL.repository.ReservaRepository;
 import com.ufrn.cb.SisAEL.repository.SalaRepository;
 import com.ufrn.cb.SisAEL.repository.HorariosDaReservaRepository;
@@ -38,6 +40,9 @@ public class FachadaDadosImp implements FachadaDados {
 	
 	@Autowired
 	ReservaRepository reservaRep;
+	
+	@Autowired
+	PesquisadorRepository pesquisadorRep;
 	
 	@Override
 	public Equipamento obterEquipamentoPorId(long id) {
@@ -104,6 +109,15 @@ public class FachadaDadosImp implements FachadaDados {
 		HorarioDaReserva repository = horarioRepository.save(horario);
 		return repository;
 	}
+	
+	
+
+	@Override
+	public Pesquisador salvarPesquisador(Pesquisador pesquisador) {
+		// TODO Auto-generated method stub
+		return pesquisadorRep.save(pesquisador);
+	}
+
 
 	@Override
 	public List<HorarioDaReserva> listarHorarios() {

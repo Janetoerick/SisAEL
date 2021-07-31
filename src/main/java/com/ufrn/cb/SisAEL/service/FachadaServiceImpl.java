@@ -9,6 +9,7 @@ import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
 import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 
 
@@ -27,6 +28,9 @@ public class FachadaServiceImpl implements FachadaService{
 	@Autowired
 	ReservaService reservaService;
 	
+	@Autowired
+	PesquisadorService pesquisadorService;
+	
 	@Override
 	public Equipamento cadastrarEquipamento(Equipamento equipamento) {
 		return equipService.cadastrarEquipamento(equipamento);
@@ -40,6 +44,13 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 	
 	
+	
+	
+	@Override
+	public Pesquisador cadastrarPesquisador(Pesquisador pesquisador) {
+		return pesquisadorService.cadastrar(pesquisador);
+	}
+
 	@Override
 	public List<Reserva> listarReservas() {
 		
