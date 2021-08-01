@@ -1,6 +1,7 @@
 package com.ufrn.cb.SisAEL.dados;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,8 @@ public interface FachadaDados {
 	public void atualizarNomeEquipamento(long id, String nome);
 	
 	public void atualizarQuantidadeEquipamento(long id, int quantidade);
+	
+	public List<ItemEquipamento> listarItens(long idTipoEquipamento);
 	
 	
 	

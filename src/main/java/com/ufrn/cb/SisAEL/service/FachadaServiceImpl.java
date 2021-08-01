@@ -1,6 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -112,6 +113,14 @@ public class FachadaServiceImpl implements FachadaService{
 		return equipService.atualizarEquipamento(equipamento);
 	}
 
+	@Override
+	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento) {
+		
+		return equipService.listarItensEquipamentos(idTipoEquipamento);
+		
+	}
+
+	
 	
 	
 

@@ -160,6 +160,12 @@ public class FachadaDadosImp implements FachadaDados {
 	}
 
 
+	@Override
+	public List<ItemEquipamento> listarItens(long idTipoEquipamento) {
+		return itemEquipRep.listarPorTipoEquipamento(idTipoEquipamento);
+	}
+
+
 	
 	
 	

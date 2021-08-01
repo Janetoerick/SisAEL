@@ -1,6 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class EquipamentoService {
 	}
 	
 	public ItemEquipamento cadastrarItemEquipamento(ItemEquipamento item) {
-		
 		ItemEquipamento resp =  fachada.salvarItemEquipamento(item);
 		Equipamento equipamento = fachada
 				.obterEquipamentoPorId(resp.getEquipamento().getId());
@@ -37,6 +37,7 @@ public class EquipamentoService {
 				atualizarQuantidadeEquipamento(equipamento.getId(), quantidade);
 		equipamento.setQuantidade(equipamento.getQuantidade()+1);
 		resp.setEquipamento(equipamento);
+
 		return resp;
 	}
 	
@@ -51,5 +52,13 @@ public class EquipamentoService {
 		String nome = equipamento.getNome();
 		fachada.atualizarNomeEquipamento(id,nome);
 		return equipamento;
+	}
+	
+	
+	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento){
+		
+		List<ItemEquipamento> lista = fachada.listarItens(idTipoEquipamento);
+
+		return lista;
 	}
 }

@@ -1,6 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
@@ -36,6 +37,8 @@ public interface FachadaService {
 	public void deletarHorarioDaReserva(long id);
 	
 	public Equipamento atualizarEquipamento(Equipamento equipamento);
+	
+	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento);
 	
 	
 	
