@@ -120,6 +120,11 @@ public class FachadaServiceImpl implements FachadaService{
 		
 	}
 
+	@Override
+	public Pesquisador obterPesquisadorPorNome(String nomeUsuario) {
+		return pesquisadorService.obterPesquisadorPorNomeUsuario(nomeUsuario);
+	}
+
 	
 	
 	

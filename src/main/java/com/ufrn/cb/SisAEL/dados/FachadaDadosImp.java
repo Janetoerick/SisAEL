@@ -166,6 +166,13 @@ public class FachadaDadosImp implements FachadaDados {
 	}
 
 
+	@Override
+	public Optional<Pesquisador> obterPesquisadorPorNome(String nomeUsuario) {
+		return pesquisadorRep.obterPorNomeUsuario(nomeUsuario);
+	}
+
+
+	
 	
 	
 	

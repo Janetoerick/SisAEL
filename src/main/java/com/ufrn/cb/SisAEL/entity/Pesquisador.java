@@ -19,7 +19,11 @@ public class Pesquisador {
 	
 	private String nome;
 	
+	private String nomeUsuario;
+	
 	private String email;
+	
+	private String role;
 
 	public Long getId() {
 		return id;
@@ -44,6 +48,15 @@ public class Pesquisador {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
 
 	public String getEmail() {
 		return email;
@@ -52,6 +65,16 @@ public class Pesquisador {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
 
 	
 

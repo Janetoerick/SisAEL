@@ -52,6 +52,8 @@ public interface FachadaDados {
 	
 	public List<ItemEquipamento> listarItens(long idTipoEquipamento);
 	
+	public Optional<Pesquisador> obterPesquisadorPorNome(String nomeUsuario);
+	
 	
 	
 	

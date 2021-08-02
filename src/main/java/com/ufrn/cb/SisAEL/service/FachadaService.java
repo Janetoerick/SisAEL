@@ -40,6 +40,8 @@ public interface FachadaService {
 	
 	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento);
 	
+	public Pesquisador obterPesquisadorPorNome(String nome);
+	
 	
 	
 

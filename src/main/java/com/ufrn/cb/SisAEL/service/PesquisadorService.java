@@ -1,5 +1,7 @@
 package com.ufrn.cb.SisAEL.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,16 @@ public class PesquisadorService {
 		Pesquisador p = fachada.salvarPesquisador(pesquisador);
 		
 		return p;
+	}
+	
+	public Pesquisador obterPesquisadorPorNomeUsuario(String nomeUsuario) {
+		
+		Optional<Pesquisador> dado =  fachada.obterPesquisadorPorNome(nomeUsuario);
+		if(dado.isPresent()) {
+			return dado.get();
+		}else {
+			return null;
+		}
 	}
 
 }
