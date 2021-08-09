@@ -3,6 +3,7 @@ package com.ufrn.cb.SisAEL.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +26,9 @@ public class HorarioController {
 	@PostMapping("cadastrar")
 	public ResponseEntity<HorarioDaReserva> cadastrarHorario(@RequestBody HorarioDaReserva horario) {
 		
+		HorarioDaReserva horarioDaReserva= fachada.cadastrarHorario(horario);
 		
-		
-		return ResponseEntity.ok(fachada.cadastrarHorario(horario));
+		return ResponseEntity.status(HttpStatus.CREATED).body(horarioDaReserva);
 		
 	}
 	
@@ -36,14 +37,14 @@ public class HorarioController {
 		
 		List<HorarioDaReserva> lista = fachada.listarHorarios();
 		
-		return ResponseEntity.ok(lista);
+		return ResponseEntity.status(HttpStatus.OK).body(lista);
 	}
 	
 	@DeleteMapping("deletar/{id}")
 	public ResponseEntity<HorarioDaReserva> deletar(@PathVariable long id){
 		
 		fachada.deletarHorarioDaReserva(id);
-		return ResponseEntity.ok(null);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 		
 	}
 
