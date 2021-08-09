@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.dados;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +50,14 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		Optional<Equipamento> o =  equipamentoRep.findById(id);
 		return o.get();
+	}
+	
+	@Override
+	public  Optional<Reserva> obterReserva(long idLab, long idSala,
+											LocalDate data, long idHorario) {
+		
+		return reservaRep.obter(idLab, idSala, data, idHorario);
+		
 	}
 	
 	

@@ -13,8 +13,6 @@ import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 @RestController
 @RequestMapping("itensequipamentos")
 public class ItemEquipamentoController{

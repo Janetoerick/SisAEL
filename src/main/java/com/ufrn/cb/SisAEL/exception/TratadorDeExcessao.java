@@ -42,5 +42,18 @@ public class TratadorDeExcessao{
 		
 		
 	}
+	
+	@ExceptionHandler(value=ReservaException.class)
+	public ResponseEntity<ErroPadrao> reservaException(ReservaException e, HttpServletRequest request){
+		
+		ErroPadrao erro = new ErroPadrao();
+		erro.setTimestamp(Instant.now());
+		erro.setError("IMPOSSIVEL RESERVAR");
+		erro.setMessage(e.getMessage());
+		erro.setStatus(HttpStatus.CONFLICT.value());
+		erro.setPath(request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+		
+	}
 
 }

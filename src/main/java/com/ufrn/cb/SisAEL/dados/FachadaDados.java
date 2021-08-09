@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.dados;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,8 @@ import com.ufrn.cb.SisAEL.entity.Sala;
 public interface FachadaDados {
 	
 	public Equipamento obterEquipamentoPorId(long id);
+	
+	public  Optional<Reserva> obterReserva(long idLab, long idSala,LocalDate data,long idHorario);
 	
 	public Equipamento salvarEquipamento(Equipamento equipamento);
 	
