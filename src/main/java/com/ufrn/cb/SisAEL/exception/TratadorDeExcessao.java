@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -82,6 +83,20 @@ public class TratadorDeExcessao{
 		erro.setStatus(HttpStatus.CONFLICT.value());
 		erro.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+		
+	}
+	
+	@ExceptionHandler(value=UsernameNotFoundException.class)
+	public ResponseEntity<ErroPadrao> 
+			nomeDeUsuarioNaoEncontrado(UsernameNotFoundException e, HttpServletRequest request){
+		
+		ErroPadrao erro = new ErroPadrao();
+		erro.setTimestamp(Instant.now());
+		erro.setError("NOME DE USUÁRIO NÃO ENCONTRADO");
+		erro.setMessage(e.getMessage());
+		erro.setStatus(HttpStatus.NOT_FOUND.value());
+		erro.setPath(request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
 		
 	}
 

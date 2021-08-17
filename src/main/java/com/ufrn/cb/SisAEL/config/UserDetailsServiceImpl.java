@@ -27,64 +27,64 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		Optional<Pesquisador> dadosPesquisador;
-		try {
-			dadosPesquisador = 
-					fachada.obterPesquisadorPorNome(username);
-			if(dadosPesquisador.isPresent()) {
-				GrantedAuthority g =new SimpleGrantedAuthority("pesquisador");
 
-				return new UserDetails() {
+		dadosPesquisador = 
+				fachada.obterPesquisadorPorNome(username);
+		if(dadosPesquisador.isPresent()) {
+			GrantedAuthority g =new SimpleGrantedAuthority("pesquisador");
 
-					private static final long serialVersionUID = 1L;
+			return new UserDetails() {
 
-					@Override
-					public boolean isEnabled() {
-						return true;
-					}
+				private static final long serialVersionUID = 1L;
 
-					@Override
-					public boolean isCredentialsNonExpired() {
-						return true;
-					}
+				@Override
+				public boolean isEnabled() {
+					return true;
+				}
 
-					@Override
-					public boolean isAccountNonLocked() {
-						return true;
-					}
+				@Override
+				public boolean isCredentialsNonExpired() {
+					return true;
+				}
 
-					@Override
-					public boolean isAccountNonExpired() {
-						return true;
-					}
+				@Override
+				public boolean isAccountNonLocked() {
+					return true;
+				}
 
-					@Override
-					public String getUsername() {
+				@Override
+				public boolean isAccountNonExpired() {
+					return true;
+				}
 
-						return dadosPesquisador.get().getNomeUsuario();
-					}
+				@Override
+				public String getUsername() {
 
-					@Override
-					public String getPassword() {
+					return dadosPesquisador.get().getNomeUsuario();
+				}
 
-						return dadosPesquisador.get().getSenha();
-					}
+				@Override
+				public String getPassword() {
 
-					@Override
-					public Collection<? extends 
-							GrantedAuthority> getAuthorities() {
+					return dadosPesquisador.get().getSenha();
+				}
 
-						ArrayList<GrantedAuthority> collection = 
-								new ArrayList<GrantedAuthority>();
-						collection.add(g);
-						return collection;
-					}
-				};
-			}else {
-				
+				@Override
+				public Collection<? extends 
+						GrantedAuthority> getAuthorities() {
 
-				Optional<Tecnico> dadosTecnico = fachada.obterTecnicoPorNome(username);
+					ArrayList<GrantedAuthority> collection = 
+							new ArrayList<GrantedAuthority>();
+					collection.add(g);
+					return collection;
+				}
+			};
+		}
+		else{
+			Optional<Tecnico> dadosTecnico = fachada.obterTecnicoPorNome(username);
+			if(dadosTecnico.isPresent()) {
 				GrantedAuthority g =new SimpleGrantedAuthority("gerente");
-				
+
 				return new UserDetails() {
 
 					private static final long serialVersionUID = 2L;
@@ -130,11 +130,14 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 						return collection;
 					}
 				};
+
+			}else {
+
+				throw new UsernameNotFoundException("Nome de Usuário não encontrado");
 			}
 
-		}catch(Exception e) {
-			throw e;
 		}
+
 
 	}
 
