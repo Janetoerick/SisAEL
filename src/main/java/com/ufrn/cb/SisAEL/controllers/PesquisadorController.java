@@ -31,7 +31,6 @@ public class PesquisadorController {
 	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Pesquisador> obterPorNomeUsuario(@PathVariable(value="nomeUsuario") String nome){
 		
-		
 		return ResponseEntity.ok(fachada.obterPesquisadorPorNome(nome));
 	}
 

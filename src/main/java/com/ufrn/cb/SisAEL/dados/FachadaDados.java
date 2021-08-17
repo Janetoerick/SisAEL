@@ -13,6 +13,7 @@ import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.entity.Sala;
+import com.ufrn.cb.SisAEL.entity.Tecnico;
 
 @Service
 public interface FachadaDados {
@@ -24,6 +25,8 @@ public interface FachadaDados {
 	public Equipamento salvarEquipamento(Equipamento equipamento);
 	
 	public Pesquisador salvarPesquisador(Pesquisador pesquisador);
+	
+	public Tecnico salvarTecnico(Tecnico tecnico);
 	
 	public ItemEquipamento salvarItemEquipamento(ItemEquipamento item);
 	
@@ -56,6 +59,8 @@ public interface FachadaDados {
 	public List<ItemEquipamento> listarItens(long idTipoEquipamento);
 	
 	public Optional<Pesquisador> obterPesquisadorPorNome(String nomeUsuario);
+	
+	public Optional<Tecnico> obterTecnicoPorNome(String nomeUsuario);
 	
 	
 	

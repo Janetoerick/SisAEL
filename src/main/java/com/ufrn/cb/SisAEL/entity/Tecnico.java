@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tecnicos")
-public class Tecnico {
+public class Tecnico implements Usuario{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +22,8 @@ public class Tecnico {
 	
 	@Column(name="senha")
 	private String senha;
+	
+	private String role;
 
 	public Long getId() {
 		return id;
@@ -38,6 +40,14 @@ public class Tecnico {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public String getNomeUsuario() {
+		return this.nomeUsuario;
+	}
+	
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
 
 	public String getLogin() {
 		return nomeUsuario;
@@ -53,6 +63,18 @@ public class Tecnico {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+
+
+	@Override
+	public String getRole() {
+		return this.role;
+	}
+
+	@Override
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	

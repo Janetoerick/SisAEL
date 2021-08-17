@@ -9,6 +9,7 @@ import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
+import com.ufrn.cb.SisAEL.entity.Tecnico;
 
 
 @Service
@@ -28,6 +29,14 @@ public class FachadaServiceImpl implements FachadaService{
 	
 	@Autowired
 	PesquisadorService pesquisadorService;
+	
+	@Autowired
+	TecnicoService tecnicoService;
+	
+	public Tecnico cadastrarTecnico(Tecnico tecnico) {
+		
+		return tecnicoService.cadastrar(tecnico);
+	}
 	
 	@Override
 	public Equipamento cadastrarEquipamento(Equipamento equipamento) {
@@ -111,7 +120,7 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento) {
+	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento){
 		
 		return equipService.listarItensEquipamentos(idTipoEquipamento);
 		
@@ -122,19 +131,9 @@ public class FachadaServiceImpl implements FachadaService{
 		return pesquisadorService.obterPesquisadorPorNomeUsuario(nomeUsuario);
 	}
 
-	
-	
-	
-
-
-	
-	
-
-	
-
-	
-
-	
-	
+	@Override
+	public Tecnico obterTecnicoPorNomeUsuario(String nomeUsuario) {
+		return tecnicoService.obterPorNomeUsuario(nomeUsuario);
+	}
 
 }

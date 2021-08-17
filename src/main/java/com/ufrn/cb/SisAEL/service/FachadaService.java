@@ -7,8 +7,11 @@ import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
+import com.ufrn.cb.SisAEL.entity.Tecnico;
 
 public interface FachadaService {
+	
+	public Tecnico cadastrarTecnico(Tecnico tecnico);
 	
 	public Equipamento cadastrarEquipamento(Equipamento equipamento);
 	
@@ -40,6 +43,7 @@ public interface FachadaService {
 	
 	public Pesquisador obterPesquisadorPorNome(String nome);
 	
+	public Tecnico obterTecnicoPorNomeUsuario(String nomeUsuario);
 	
 	
 

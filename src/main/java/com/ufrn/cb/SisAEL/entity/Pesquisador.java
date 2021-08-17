@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pesquisadores")
-public class Pesquisador {
+public class Pesquisador implements Usuario{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,6 +20,8 @@ public class Pesquisador {
 	private String nome;
 	
 	private String nomeUsuario;
+	
+	private String senha;
 	
 	private String email;
 	
@@ -56,6 +58,15 @@ public class Pesquisador {
 
 	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
+	}
+	
+	public String getSenha() {
+		
+		return this.senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getEmail() {

@@ -3,10 +3,12 @@ package com.ufrn.cb.SisAEL.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
+import com.ufrn.cb.SisAEL.exception.EntidadeNaoEncontradaException;
 
 @Service
 public class PesquisadorService {
@@ -15,7 +17,8 @@ public class PesquisadorService {
 	FachadaDados fachada;
 	
 	public Pesquisador cadastrar(Pesquisador pesquisador) {
-		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		pesquisador.setSenha(encoder.encode(pesquisador.getSenha()));
 		Pesquisador p = fachada.salvarPesquisador(pesquisador);
 		
 		return p;
@@ -27,7 +30,8 @@ public class PesquisadorService {
 		if(dado.isPresent()) {
 			return dado.get();
 		}else {
-			return null;
+			
+			throw new EntidadeNaoEncontradaException("Este usuário não foi encontrado");
 		}
 	}
 

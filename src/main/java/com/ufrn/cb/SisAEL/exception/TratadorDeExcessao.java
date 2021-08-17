@@ -12,6 +12,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class TratadorDeExcessao{
 	
+	@ExceptionHandler(value=EntidadeNaoEncontradaException.class)
+	public ResponseEntity<ErroPadrao> 
+		entidadeNaoEncontrada(EntidadeNaoEncontradaException e,
+				HttpServletRequest request){
+		
+		ErroPadrao erro = new ErroPadrao();
+		erro.setStatus(HttpStatus.NOT_FOUND.value());
+		erro.setMessage(e.getMessage());
+		erro.setError("RECURSO NÃO ENCONTRADO");
+		erro.setTimestamp(Instant.now());
+		erro.setPath(request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(erro);
+		
+	}
+	
 	@ExceptionHandler(value=ColisaoDeHorarioException.class)
 	public ResponseEntity<ErroPadrao> 
 		colisaoDeHorarioException(ColisaoDeHorarioException e, 
@@ -36,15 +51,29 @@ public class TratadorDeExcessao{
 		erro.setTimestamp(Instant.now());
 		erro.setError("DADOS INVALIDOS");
 		erro.setMessage(e.getMessage());
-		erro.setStatus(HttpStatus.CONFLICT.value());
+		erro.setStatus(HttpStatus.BAD_REQUEST.value());
 		erro.setPath(request.getRequestURI());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 		
+	}
+	
+	@ExceptionHandler(value=DadosIncompletosException.class)
+	public ResponseEntity<ErroPadrao> 
+	dadosInvalidosException(DadosIncompletosException e, 
+			HttpServletRequest request){
+		ErroPadrao erro = new ErroPadrao();
+		erro.setTimestamp(Instant.now());
+		erro.setError("DADOS INCOMPLETOS");
+		erro.setMessage(e.getMessage());
+		erro.setStatus(HttpStatus.BAD_REQUEST.value());
+		erro.setPath(request.getRequestURI());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 		
 	}
 	
 	@ExceptionHandler(value=ReservaException.class)
-	public ResponseEntity<ErroPadrao> reservaException(ReservaException e, HttpServletRequest request){
+	public ResponseEntity<ErroPadrao> 
+			reservaException(ReservaException e, HttpServletRequest request){
 		
 		ErroPadrao erro = new ErroPadrao();
 		erro.setTimestamp(Instant.now());
