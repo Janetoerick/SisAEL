@@ -10,12 +10,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="equipamentos")
-public class Equipamento {
+public class Estoque {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	
 	@Column(name = "nome", unique = true, nullable=false)
 	private String nome;
@@ -30,8 +29,6 @@ public class Equipamento {
 		this.id = id;
 	}
 
-
-	
 	public String getNome() {
 		return nome;
 	}

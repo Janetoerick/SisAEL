@@ -7,11 +7,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ufrn.cb.SisAEL.entity.Equipamento;
+import com.ufrn.cb.SisAEL.entity.Estoque;
 
 @Transactional
 @Repository
-public interface EquipRepository extends JpaRepository<Equipamento, Long> {
+public interface EquipRepository extends JpaRepository<Estoque, Long> {
 	
 	@Modifying
 	@Transactional

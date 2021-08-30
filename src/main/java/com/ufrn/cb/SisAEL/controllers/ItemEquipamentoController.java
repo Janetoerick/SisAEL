@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
+import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
@@ -21,21 +21,21 @@ public class ItemEquipamentoController{
 	FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<ItemEquipamento> cadastrar(@RequestBody ItemEquipamento item){
+	public ResponseEntity<Produto> cadastrar(@RequestBody Produto item){
 		return ResponseEntity.ok(fachada.cadastrarItemEquipamento(item));
 		
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<ItemEquipamento>> listar(){
+	public ResponseEntity<List<Produto>> listar(){
 		
 		return ResponseEntity.ok(fachada.listarItensEquipamento());
 	}
 	
 	@GetMapping("{idTipoEquipamento}")
-	public ResponseEntity<List<ItemEquipamento>> listar(@PathVariable("idTipoEquipamento") long idTipoEquipamento){
+	public ResponseEntity<List<Produto>> listar(@PathVariable("idTipoEquipamento") long idTipoEquipamento){
 		
-		List<ItemEquipamento> itens = fachada.listarItensEquipamentos(idTipoEquipamento);
+		List<Produto> itens = fachada.listarItensEquipamentos(idTipoEquipamento);
 		return ResponseEntity.ok(itens);
 		
 	}

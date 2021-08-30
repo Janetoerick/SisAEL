@@ -68,12 +68,12 @@ public class Tecnico implements Usuario{
 
 
 	@Override
-	public String getRole() {
+	public String getCargo() {
 		return this.role;
 	}
 
 	@Override
-	public void setRole(String role) {
+	public void setCargo(String role) {
 		this.role = role;
 	}
 

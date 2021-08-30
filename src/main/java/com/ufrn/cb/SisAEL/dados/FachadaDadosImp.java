@@ -6,9 +6,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
-import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
+import com.ufrn.cb.SisAEL.entity.Estoque;
+import com.ufrn.cb.SisAEL.entity.Horario;
+import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
@@ -51,9 +51,9 @@ public class FachadaDadosImp implements FachadaDados {
 	TecnicoRepository tecnicoRep;
 	
 	@Override
-	public Equipamento obterEquipamentoPorId(long id) {
+	public Estoque obterEquipamentoPorId(long id) {
 		
-		Optional<Equipamento> o =  equipamentoRep.findById(id);
+		Optional<Estoque> o =  equipamentoRep.findById(id);
 		return o.get();
 	}
 	
@@ -67,26 +67,26 @@ public class FachadaDadosImp implements FachadaDados {
 	
 	
 	@Override
-	public Equipamento salvarEquipamento(Equipamento equipamento) {
+	public Estoque salvarEquipamento(Estoque equipamento) {
 		
-		Equipamento eq = equipamentoRep.save(equipamento);
+		Estoque eq = equipamentoRep.save(equipamento);
 		return eq;
 	}
 	
 	@Override
-	public List<Equipamento> listarEquipamentos() {
+	public List<Estoque> listarEquipamentos() {
 		
 		return equipamentoRep.findAll();
 	}
 	
 	@Override
-	public ItemEquipamento salvarItemEquipamento(ItemEquipamento item) {
+	public Produto salvarItemEquipamento(Produto item) {
 		
 		return itemEquipRep.save(item);
 	}
 	
 	@Override
-	public List<ItemEquipamento> listarItensEquipamentos(){
+	public List<Produto> listarItensEquipamentos(){
 		
 		return itemEquipRep.findAll();
 	}
@@ -119,8 +119,8 @@ public class FachadaDadosImp implements FachadaDados {
 	}
 
 	@Override
-	public HorarioDaReserva salvarHorario(HorarioDaReserva horario) {
-		HorarioDaReserva repository = horarioRepository.save(horario);
+	public Horario salvarHorario(Horario horario) {
+		Horario repository = horarioRepository.save(horario);
 		return repository;
 	}
 	
@@ -138,7 +138,7 @@ public class FachadaDadosImp implements FachadaDados {
 
 
 	@Override
-	public List<HorarioDaReserva> listarHorarios() {
+	public List<Horario> listarHorarios() {
 		
 		return horarioRepository.findAll();
 	}
@@ -150,7 +150,7 @@ public class FachadaDadosImp implements FachadaDados {
 	}
 
 	@Override
-	public Equipamento atualizarEquipamento(Equipamento equipamento) {
+	public Estoque atualizarEquipamento(Estoque equipamento) {
 		
 		return equipamentoRep.save(equipamento);
 	}
@@ -179,7 +179,7 @@ public class FachadaDadosImp implements FachadaDados {
 
 
 	@Override
-	public List<ItemEquipamento> listarItens(long idTipoEquipamento) {
+	public List<Produto> listarItens(long idTipoEquipamento) {
 		return itemEquipRep.listarPorTipoEquipamento(idTipoEquipamento);
 	}
 

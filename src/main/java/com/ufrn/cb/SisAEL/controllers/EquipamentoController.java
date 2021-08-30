@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Equipamento;
+import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -22,21 +22,21 @@ public class EquipamentoController {
 	FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<Equipamento> cadastrar(@RequestBody Equipamento equipamento) {
+	public ResponseEntity<Estoque> cadastrar(@RequestBody Estoque equipamento) {
 		
 		
 		return ResponseEntity.ok(fachada.cadastrarEquipamento(equipamento));
 	}
 	
 	@GetMapping("listar")
-	public ResponseEntity<List<Equipamento>> listar(){
+	public ResponseEntity<List<Estoque>> listar(){
 		
 		return ResponseEntity.ok(fachada.listarEquipamentos());
 	}
 	
 	@PutMapping("atualizar")
-	public ResponseEntity<Equipamento> 
-			atualizarEquipamento(@RequestBody Equipamento equipamento){
+	public ResponseEntity<Estoque> 
+			atualizarEquipamento(@RequestBody Estoque equipamento){
 		
 		return ResponseEntity.ok(fachada.atualizarEquipamento(equipamento));
 		

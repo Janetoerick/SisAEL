@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
-import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
+import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.exception.ColisaoDeHorarioException;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 
@@ -17,7 +17,7 @@ public class HorariosService {
 	@Autowired
 	private FachadaDados fachada;
 	
-	public HorarioDaReserva cadastrar(HorarioDaReserva horario) {
+	public Horario cadastrar(Horario horario) {
 		
 		if(horario == null || horario.getHoraInicial()
 				.equals(horario.getHoraFinal()) || horario
@@ -27,8 +27,8 @@ public class HorariosService {
 			
 		}
 		
-		List<HorarioDaReserva> horarios = fachada.listarHorarios();
-		for (HorarioDaReserva h : horarios) {
+		List<Horario> horarios = fachada.listarHorarios();
+		for (Horario h : horarios) {
 
 			if((horario.getHoraInicial().equals(h.getHoraInicial()) && 
 					horario.getHoraFinal().equals(h.getHoraFinal())) ||
@@ -53,24 +53,24 @@ public class HorariosService {
 			}
 		}
 		
-		HorarioDaReserva h = fachada.salvarHorario(horario);
+		Horario h = fachada.salvarHorario(horario);
 		return h;
 		
 	}
 	
-	public List<HorarioDaReserva> listarHorarios(){
+	public List<Horario> listarHorarios(){
 		
 		
 	
-		ArrayList<HorarioDaReserva> horarios = 
-				(ArrayList<HorarioDaReserva>) fachada.listarHorarios();
+		ArrayList<Horario> horarios = 
+				(ArrayList<Horario>) fachada.listarHorarios();
 		
 
 		for(int i = 0;i < horarios.size() - 1;i++) {
 			for(int j = i+1;j < horarios.size();j++) {
 				if(horarios.get(i).getHoraInicial()
 						.isAfter(horarios.get(j).getHoraInicial())) {
-					HorarioDaReserva temp = horarios.get(i);
+					Horario temp = horarios.get(i);
 					horarios.set(i, horarios.get(j));
 					horarios.set(j, temp);
 				}

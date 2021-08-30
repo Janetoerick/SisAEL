@@ -3,9 +3,9 @@ package com.ufrn.cb.SisAEL.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
-import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
+import com.ufrn.cb.SisAEL.entity.Estoque;
+import com.ufrn.cb.SisAEL.entity.Horario;
+import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
@@ -39,7 +39,7 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 	
 	@Override
-	public Equipamento cadastrarEquipamento(Equipamento equipamento) {
+	public Estoque cadastrarEquipamento(Estoque equipamento) {
 		return equipService.cadastrarEquipamento(equipamento);
 	}
 	
@@ -65,13 +65,13 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public List<Equipamento> listarEquipamentos() {
+	public List<Estoque> listarEquipamentos() {
 		
 		return equipService.listar();
 	}
 	
 	@Override
-	public ItemEquipamento cadastrarItemEquipamento(ItemEquipamento item) {
+	public Produto cadastrarItemEquipamento(Produto item) {
 		// TODO Auto-generated method stub
 		return equipService.cadastrarItemEquipamento(item);
 	}
@@ -83,7 +83,7 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 	
 	@Override
-	public List<ItemEquipamento> listarItensEquipamento(){
+	public List<Produto> listarItensEquipamento(){
 		
 		return equipService.listarItensEquipamento();
 	}
@@ -95,13 +95,13 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public HorarioDaReserva cadastrarHorario(HorarioDaReserva horario) {
+	public Horario cadastrarHorario(Horario horario) {
 		
 		return horarioService.cadastrar(horario);
 	}
 
 	@Override
-	public List<HorarioDaReserva> listarHorarios() {
+	public List<Horario> listarHorarios() {
 		
 		return horarioService.listarHorarios();
 	}
@@ -114,13 +114,13 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public Equipamento atualizarEquipamento(Equipamento equipamento) {
+	public Estoque atualizarEquipamento(Estoque equipamento) {
 		
 		return equipService.atualizarEquipamento(equipamento);
 	}
 
 	@Override
-	public List<ItemEquipamento> listarItensEquipamentos(long idTipoEquipamento){
+	public List<Produto> listarItensEquipamentos(long idTipoEquipamento){
 		
 		return equipService.listarItensEquipamentos(idTipoEquipamento);
 		

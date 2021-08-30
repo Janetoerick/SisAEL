@@ -9,17 +9,17 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
+import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Transactional
 @Repository
 public interface ItemEquipamentoRepository 
-								extends JpaRepository<ItemEquipamento, Long> {
+								extends JpaRepository<Produto, Long> {
 
 	@Transactional
 	@Modifying
 	@Query("select i from ItemEquipamento i where i.equipamento.id = :idTipoEquipamento")
-	List<ItemEquipamento> listarPorTipoEquipamento(@Param("idTipoEquipamento") long idTipoEquipamento);
+	List<Produto> listarPorTipoEquipamento(@Param("idTipoEquipamento") long idTipoEquipamento);
 	
 	
 }

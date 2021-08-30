@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
+import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -24,24 +24,24 @@ public class HorarioController {
 	private FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<HorarioDaReserva> cadastrarHorario(@RequestBody HorarioDaReserva horario) {
+	public ResponseEntity<Horario> cadastrarHorario(@RequestBody Horario horario) {
 		
-		HorarioDaReserva horarioDaReserva= fachada.cadastrarHorario(horario);
+		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(horarioDaReserva);
 		
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<HorarioDaReserva>> listar(){
+	public ResponseEntity<List<Horario>> listar(){
 		
-		List<HorarioDaReserva> lista = fachada.listarHorarios();
+		List<Horario> lista = fachada.listarHorarios();
 		
 		return ResponseEntity.status(HttpStatus.OK).body(lista);
 	}
 	
 	@DeleteMapping("deletar/{id}")
-	public ResponseEntity<HorarioDaReserva> deletar(@PathVariable long id){
+	public ResponseEntity<Horario> deletar(@PathVariable long id){
 		
 		fachada.deletarHorarioDaReserva(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

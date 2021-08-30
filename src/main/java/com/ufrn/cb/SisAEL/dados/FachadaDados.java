@@ -6,9 +6,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.HorarioDaReserva;
-import com.ufrn.cb.SisAEL.entity.ItemEquipamento;
+import com.ufrn.cb.SisAEL.entity.Estoque;
+import com.ufrn.cb.SisAEL.entity.Horario;
+import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
@@ -18,23 +18,23 @@ import com.ufrn.cb.SisAEL.entity.Tecnico;
 @Service
 public interface FachadaDados {
 	
-	public Equipamento obterEquipamentoPorId(long id);
+	public Estoque obterEquipamentoPorId(long id);
 	
 	public  Optional<Reserva> obterReserva(long idLab, long idSala,LocalDate data,long idHorario);
 	
-	public Equipamento salvarEquipamento(Equipamento equipamento);
+	public Estoque salvarEquipamento(Estoque equipamento);
 	
 	public Pesquisador salvarPesquisador(Pesquisador pesquisador);
 	
 	public Tecnico salvarTecnico(Tecnico tecnico);
 	
-	public ItemEquipamento salvarItemEquipamento(ItemEquipamento item);
+	public Produto salvarItemEquipamento(Produto item);
 	
 	public Reserva salvarReserva(Reserva reserva);
 	
-	public List<Equipamento> listarEquipamentos();
+	public List<Estoque> listarEquipamentos();
 	
-	public List<ItemEquipamento> listarItensEquipamentos();
+	public List<Produto> listarItensEquipamentos();
 	
 	public Laboratorio salvarLaboratorio(Laboratorio laboratorio);
 	
@@ -42,21 +42,21 @@ public interface FachadaDados {
 	
 	public Sala salvarSala(Sala sala);
 	
-	public HorarioDaReserva salvarHorario(HorarioDaReserva horario);
+	public Horario salvarHorario(Horario horario);
 	
-	public List<HorarioDaReserva> listarHorarios();
+	public List<Horario> listarHorarios();
 	
 	public List<Reserva> listarReservas();
 	
 	public void deletarHorarioDaReserva(long id);
 	
-	public Equipamento atualizarEquipamento(Equipamento equipamento);
+	public Estoque atualizarEquipamento(Estoque equipamento);
 	
 	public void atualizarNomeEquipamento(long id, String nome);
 	
 	public void atualizarQuantidadeEquipamento(long id, int quantidade);
 	
-	public List<ItemEquipamento> listarItens(long idTipoEquipamento);
+	public List<Produto> listarItens(long idTipoEquipamento);
 	
 	public Optional<Pesquisador> obterPesquisadorPorNome(String nomeUsuario);
 	

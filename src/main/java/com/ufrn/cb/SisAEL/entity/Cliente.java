@@ -8,87 +8,79 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pesquisadores")
-public class Pesquisador implements Usuario{
+@Table(name="reservantes")
+public class Cliente implements Usuario{
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(unique = true, nullable = false)
-	private Long matricula;
+	private long id;
 	
 	private String nome;
 	
+	@Column(nullable = false, unique = true)
 	private String nomeUsuario;
 	
+	@Column(nullable = false)
 	private String senha;
 	
-	private String email;
-	
-	private String role;
+	private String cargo;
 
+	@Override
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
+		
 	}
 
-	public Long getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
-	}
-
+	@Override
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
+	@Override
 	public void setNome(String nome) {
 		this.nome = nome;
+		
 	}
-	
 
+	@Override
 	public String getNomeUsuario() {
-		return nomeUsuario;
+		return this.nomeUsuario;
 	}
 
+	@Override
 	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
-	}
-	
-	public String getSenha() {
 		
+	}
+
+	@Override
+	public String getSenha() {
 		return this.senha;
 	}
-	
+
+	@Override
 	public void setSenha(String senha) {
 		this.senha = senha;
+		
 	}
 
-	public String getEmail() {
-		return email;
+	@Override
+	public String getCargo() {
+		
+		return this.cargo;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
+	@Override
+	public void setCargo(String role) {
+		this.cargo = role;
+		
 	}
 	
 	
 
-	
-
-
-	
 }

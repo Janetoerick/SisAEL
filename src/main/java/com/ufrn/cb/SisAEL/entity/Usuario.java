@@ -18,8 +18,8 @@ public interface Usuario {
 	
 	public void setSenha(String senha);
 	
-	public String getRole();
+	public String getCargo();
 	
-	public void setRole(String role);
+	public void setCargo(String role);
 
 }

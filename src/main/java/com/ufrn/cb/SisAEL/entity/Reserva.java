@@ -1,6 +1,5 @@
 package com.ufrn.cb.SisAEL.entity;
 
-import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,28 +18,20 @@ public class Reserva {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private double valor;
+	
 	@ManyToMany
 	@JoinColumn(name="id_equipamento")
-	private List<ItemEquipamento> equipamentos;
+	private List<Produto> produtos;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pesquisador")
-	private Pesquisador pesquisador;
+	@JoinColumn(name = "id_reservante")
+	private Cliente cliente;
 	
 	@ManyToOne
-	@JoinColumn(name="id_horario_da_reserva")
-	private HorarioDaReserva horarioDaReserva;
-	
-	@ManyToOne
-	@JoinColumn(name="id_laboratorio")
-	private Laboratorio laboratorio;
+	private Horario horario;
+		
 
-	@ManyToOne
-	@JoinColumn(name="id_sala")
-	private Sala sala;
-	
-	private LocalDate data;
-	
 	public Long getId() {
 		return id;
 	}
@@ -49,53 +40,45 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public List<ItemEquipamento> getEquipamentos() {
-		return equipamentos;
+	public double getValor() {
+		return valor;
 	}
 
-	public void setEquipamentos(List<ItemEquipamento> equipamentos) {
-		this.equipamentos = equipamentos;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 
-	public Pesquisador getPesquisador() {
-		return pesquisador;
+
+
+	public Cliente getCliente() {
+		return cliente;
 	}
 
-	public void setPesquisador(Pesquisador pesquisador) {
-		this.pesquisador = pesquisador;
+	public void setCliente(Cliente reservante) {
+		this.cliente = reservante;
 	}
 
-	public HorarioDaReserva getHorarioDaReserva() {
-		return horarioDaReserva;
+	public Horario getHorario() {
+		return horario;
 	}
 
-	public void setHorarioDaReserva(HorarioDaReserva horarioDaReserva) {
-		this.horarioDaReserva = horarioDaReserva;
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
 
-	public Laboratorio getLaboratorio() {
-		return laboratorio;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setLaboratorio(Laboratorio laboratorio) {
-		this.laboratorio = laboratorio;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
+	
+	
 
-	public Sala getSala() {
-		return sala;
-	}
 
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
+	
+	
 	
 	
 	

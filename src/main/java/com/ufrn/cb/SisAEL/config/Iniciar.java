@@ -23,7 +23,7 @@ public class Iniciar implements CommandLineRunner{
 		p.setNome("Fulando da Silva");
 		p.setNomeUsuario("pesquisador");
 		p.setSenha("12345");
-		p.setRole("pesquisador");
+		p.setCargo("pesquisador");
 		p.setEmail("pesquisador@ufrn.edu.br");
 		
 		
@@ -31,7 +31,7 @@ public class Iniciar implements CommandLineRunner{
 		t.setNome("Fulano Medeiros");
 		t.setNomeUsuario("tecnico");
 		t.setSenha("12345");
-		t.setRole("gerente");
+		t.setCargo("gerente");
 	
 		
 		fachada.cadastrarPesquisador(p);

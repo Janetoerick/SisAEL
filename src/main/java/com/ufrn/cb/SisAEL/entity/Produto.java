@@ -9,17 +9,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="itens_equipamento")
-public class ItemEquipamento {
+@Table(name="reservaveis")
+public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	private int tombamento;
+	private boolean disponivel;
 	
 	@ManyToOne
-	private Equipamento equipamento;
+	private Estoque estoque;
 
 	
 	public long getId() {
@@ -30,23 +30,25 @@ public class ItemEquipamento {
 		this.id = id;
 	}
 
-	public int getTombamento() {
-		return tombamento;
+	public Estoque getEstoque() {
+		return estoque;
+	}
+	
+	public void setEstoque(Estoque tipo) {
+		this.estoque = tipo;
 	}
 
-	public void setTombamento(int tombamento) {
-		this.tombamento = tombamento;
+	public boolean isDisponivel() {
+		return disponivel;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="id_equipamento")
-	public Equipamento getEquipamento() {
-		return equipamento;
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 
-	public void setEquipamento(Equipamento equipamento) {
-		this.equipamento = equipamento;
-	}
+	
+	
+	
 	
 	
 	
