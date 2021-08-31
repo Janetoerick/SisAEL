@@ -5,7 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
+import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Tecnico;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
@@ -18,13 +18,13 @@ public class Iniciar implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Pesquisador p = new Pesquisador();
-		p.setMatricula(12345678L);
-		p.setNome("Fulando da Silva");
-		p.setNomeUsuario("pesquisador");
-		p.setSenha("12345");
-		p.setCargo("pesquisador");
-		p.setEmail("pesquisador@ufrn.edu.br");
+//		Cliente p = new Cliente();
+//		p.(12345678L);
+//		p.setNome("Fulando da Silva");
+//		p.setNomeUsuario("pesquisador");
+//		p.setSenha("12345");
+//		p.setCargo("pesquisador");
+//		p.setEmail("pesquisador@ufrn.edu.br");
 		
 		
 		Tecnico t = new Tecnico();
@@ -34,7 +34,7 @@ public class Iniciar implements CommandLineRunner{
 		t.setCargo("gerente");
 	
 		
-		fachada.cadastrarPesquisador(p);
+//		fachada.cadastrarPesquisador(p);
 		fachada.cadastrarTecnico(t);
 		
 	}

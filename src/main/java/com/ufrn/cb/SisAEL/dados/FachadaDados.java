@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
@@ -22,11 +23,7 @@ public interface FachadaDados {
 	
 	public  Optional<Reserva> obterReserva(long idLab, long idSala,LocalDate data,long idHorario);
 	
-	public Estoque salvarEquipamento(Estoque equipamento);
-	
-	public Pesquisador salvarPesquisador(Pesquisador pesquisador);
-	
-	public Tecnico salvarTecnico(Tecnico tecnico);
+	public Cliente salvarCliente(Cliente cliente);
 	
 	public Produto salvarItemEquipamento(Produto item);
 	
@@ -36,11 +33,9 @@ public interface FachadaDados {
 	
 	public List<Produto> listarItensEquipamentos();
 	
-	public Laboratorio salvarLaboratorio(Laboratorio laboratorio);
+	public Produto salvarLaboratorio(Produto produto);
 	
-	public List<Laboratorio> listarLaboratorios();
-	
-	public Sala salvarSala(Sala sala);
+	public List<Produto> listarLaboratorios();
 	
 	public Horario salvarHorario(Horario horario);
 	

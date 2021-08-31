@@ -11,17 +11,12 @@ import com.ufrn.cb.SisAEL.entity.Estoque;
 
 @Transactional
 @Repository
-public interface EquipRepository extends JpaRepository<Estoque, Long> {
+public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
+	
 	
 	@Modifying
 	@Transactional
-	@Query("update Equipamento e set e.nome = :nome where e.id = :id")
-	void atualizarNome(@Param(value="id") long id,
-			@Param(value="nome") String nome);
-	
-	@Modifying
-	@Transactional
-	@Query("update Equipamento e set e.quantidade = :quantidade where e.id = :id")
+	@Query("update Produto e set e.estoque.quantidade = :quantidade where e.id = :id")
 	void atualizarQuantidade(@Param(value="id") long id,
 			@Param(value="quantidade") int quantidade);
 	

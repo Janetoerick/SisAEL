@@ -6,8 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
 
-@Repository
 @Transactional
-public interface HorariosDaReservaRepository extends JpaRepository<Horario, Long> {
+public interface HorarioRepository extends JpaRepository<Horario, Long> {
 
 }
