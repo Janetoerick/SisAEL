@@ -1,6 +1,5 @@
 package com.ufrn.cb.SisAEL.dados;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,57 +7,47 @@ import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Estoque;
-import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Sala;
-import com.ufrn.cb.SisAEL.entity.Tecnico;
 
 @Service
 public interface FachadaDados {
 	
-	public Estoque obterEquipamentoPorId(long id);
 	
-	public  Optional<Reserva> obterReserva(long idLab, long idSala,LocalDate data,long idHorario);
-	
-	public Cliente salvarCliente(Cliente cliente);
-	
-	public Produto salvarItemEquipamento(Produto item);
+	public Optional<Reserva> obterReserva(long id);
 	
 	public Reserva salvarReserva(Reserva reserva);
 	
-	public List<Estoque> listarEquipamentos();
-	
-	public List<Produto> listarItensEquipamentos();
-	
-	public Produto salvarLaboratorio(Produto produto);
-	
-	public List<Produto> listarLaboratorios();
-	
-	public Horario salvarHorario(Horario horario);
-	
-	public List<Horario> listarHorarios();
-	
 	public List<Reserva> listarReservas();
 	
-	public void deletarHorarioDaReserva(long id);
+	public void atualizarReserva(Reserva reserva);
 	
-	public Estoque atualizarEquipamento(Estoque equipamento);
+	public Optional<Produto> obterProduto(long id);
 	
-	public void atualizarNomeEquipamento(long id, String nome);
+	public Produto salvarProduto(Produto produto);
 	
-	public void atualizarQuantidadeEquipamento(long id, int quantidade);
+	public List<Produto> listarProdutos();
 	
-	public List<Produto> listarItens(long idTipoEquipamento);
+	public List<Produto> listarProdutos(long idReserva);
 	
-	public Optional<Pesquisador> obterPesquisadorPorNome(String nomeUsuario);
+	public Optional<Estoque> obterEstoque(long id);
 	
-	public Optional<Tecnico> obterTecnicoPorNome(String nomeUsuario);
+	public Estoque salvarEstoque(Estoque estoque);
 	
+	public void atualizarEstoque(Estoque estoque);
 	
+	public List<Estoque> listarEstoques();
 	
+	public void deletarEstoque(long id);
 	
+	public Optional<Cliente> obterCliente(String nomeUsuario);
+	
+	public Cliente salvarCliente(Cliente cliente);
+	
+	public void atualizarCliente(Cliente cliente);
+	
+	public void deletarCliente(long id);
+	
+	public List<Cliente> listarClientes();
 
 }

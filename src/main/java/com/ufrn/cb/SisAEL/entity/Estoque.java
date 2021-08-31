@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="equipamentos")
+@Table(name="Estoque")
 public class Estoque {
 	
 	@Id
