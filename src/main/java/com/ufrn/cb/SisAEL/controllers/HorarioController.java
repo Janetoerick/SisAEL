@@ -24,7 +24,7 @@ public class HorarioController {
 	private FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<Horario> cadastrarHorario(@RequestBody Horario horario) {
+	public ResponseEntity<Horario> cadastrar(@RequestBody Horario horario) {
 		
 		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
 		
@@ -43,7 +43,7 @@ public class HorarioController {
 	@DeleteMapping("deletar/{id}")
 	public ResponseEntity<Horario> deletar(@PathVariable long id){
 		
-		fachada.deletarHorarioDaReserva(id);
+		fachada.deletarHorario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 		
 	}

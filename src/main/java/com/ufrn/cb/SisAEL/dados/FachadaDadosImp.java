@@ -6,10 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Estoque;
+import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
+import com.ufrn.cb.SisAEL.repository.AdminRepository;
 import com.ufrn.cb.SisAEL.repository.ClienteRepository;
 import com.ufrn.cb.SisAEL.repository.EstoqueRepository;
 import com.ufrn.cb.SisAEL.repository.HorarioRepository;
@@ -23,6 +26,9 @@ public class FachadaDadosImp implements FachadaDados {
 	ClienteRepository clienteRep;
 	
 	@Autowired
+	AdminRepository adminRep;
+	
+	@Autowired
 	EstoqueRepository estoqueRep;
 	
 	@Autowired
@@ -33,6 +39,7 @@ public class FachadaDadosImp implements FachadaDados {
 	
 	@Autowired
 	ReservaRepository reservaRep;
+	
 
 	@Override
 	public Optional<Reserva> obterReserva(long id) {
@@ -54,6 +61,11 @@ public class FachadaDadosImp implements FachadaDados {
 	public void atualizarReserva(Reserva reserva) {
 		reservaRep.save(reserva);
 	}
+	
+	public void deletarReserva(long id) {
+		
+		reservaRep.deleteById(id);
+	}
 
 	@Override
 	public Optional<Produto> obterProduto(long id) {
@@ -64,6 +76,11 @@ public class FachadaDadosImp implements FachadaDados {
 	public Produto salvarProduto(Produto produto) {
 		Produto p = produtoRep.save(produto);
 		return p;
+	}
+	
+	public void atualizarProduto(Produto produto) {
+		
+		produtoRep.save(produto);
 	}
 
 	@Override
@@ -104,6 +121,7 @@ public class FachadaDadosImp implements FachadaDados {
 
 	@Override
 	public Optional<Cliente> obterCliente(String nomeUsuario) {
+		
 		return clienteRep.obterPorNomeUsuario(nomeUsuario);
 	}
 
@@ -125,7 +143,38 @@ public class FachadaDadosImp implements FachadaDados {
 
 	@Override
 	public List<Cliente> listarClientes() {
+		
 		return clienteRep.findAll();
+	}
+
+	@Override
+	public Horario salvarHorario(Horario horario) {
+		
+		return horarioRep.save(horario);
+	}
+
+	@Override
+	public List<Horario> listarHorarios() {
+		
+		return horarioRep.findAll();
+	}
+
+	@Override
+	public void deletarHorario(long id) {
+		// TODO Auto-generated method stub
+		horarioRep.deleteById(id);
+	}
+
+	@Override
+	public Admin salvarAdmin(Admin admin) {
+		
+		return adminRep.save(admin);
+	}
+
+	@Override
+	public Optional<Admin> obterAdmin(String nomeUsuario) {
+		
+		return adminRep.obterPorNomeUsuario(nomeUsuario);
 	}
 
 	

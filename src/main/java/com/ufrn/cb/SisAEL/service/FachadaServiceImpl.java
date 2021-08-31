@@ -6,41 +6,48 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Tecnico;
+import com.ufrn.cb.SisAEL.entity.Admin;
+import com.ufrn.cb.SisAEL.entity.Cliente;
 
 
 @Service
 public class FachadaServiceImpl implements FachadaService{
 
-	@Autowired
-	EquipamentoService equipService;
 	
 	@Autowired
-	LaboratorioService labService;
+	EstoqueService estoqueService;
 	
 	@Autowired
-	HorariosService horarioService;
+	ProdutoService produtoService;
+	
+	@Autowired
+	HorarioService horarioService;
 	
 	@Autowired
 	ReservaService reservaService;
 	
 	@Autowired
-	PesquisadorService pesquisadorService;
+	CalculoValorReserva calculoValorReserva;
 	
 	@Autowired
-	TecnicoService tecnicoService;
+	ClienteService clienteService;
 	
-	public Tecnico cadastrarTecnico(Tecnico tecnico) {
+	@Autowired
+	AdminService adminService;
+	
+	@Autowired
+	AdminService tecnicoService;
+	
+	
+	public Admin cadastrarTecnico(Admin tecnico) {
 		
 		return tecnicoService.cadastrar(tecnico);
 	}
 	
 	@Override
-	public Estoque cadastrarEquipamento(Estoque equipamento) {
-		return equipService.cadastrarEquipamento(equipamento);
+	public Estoque cadastrarEstoque(Estoque estoque) {
+		return estoqueService.cadastrar(estoque);
 	}
 	
 	@Override
@@ -51,11 +58,9 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 	
 	
-	
-	
 	@Override
-	public Pesquisador cadastrarPesquisador(Pesquisador pesquisador) {
-		return pesquisadorService.cadastrar(pesquisador);
+	public Cliente cadastrarCliente(Cliente cliente) {
+		return clienteService.cadastrar(cliente);
 	}
 
 	@Override
@@ -65,35 +70,22 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public List<Estoque> listarEquipamentos() {
+	public List<Estoque> listarEstoques() {
 		
-		return equipService.listar();
+		return estoqueService.listar();
 	}
 	
 	@Override
-	public Produto cadastrarItemEquipamento(Produto item) {
-		// TODO Auto-generated method stub
-		return equipService.cadastrarItemEquipamento(item);
+	public Produto cadastrarProduto(Produto item) {
+		return produtoService.cadastrar(item);
 	}
 
 	@Override
-	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio) {
+	public List<Produto> listarProdutos(){
 		
-		return labService.cadastrar(laboratorio);
+		return produtoService.listar();
 	}
 	
-	@Override
-	public List<Produto> listarItensEquipamento(){
-		
-		return equipService.listarItensEquipamento();
-	}
-	
-	@Override
-	public List<Laboratorio> listarLaboratorios() {
-		
-		return labService.listar();
-	}
-
 	@Override
 	public Horario cadastrarHorario(Horario horario) {
 		
@@ -107,33 +99,83 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 
 	@Override
-	public void deletarHorarioDaReserva(long id) {
+	public void deletarHorario(long id) {
 		
 		horarioService.deletarHorario(id);
 		
 	}
 
 	@Override
-	public Estoque atualizarEquipamento(Estoque equipamento) {
+	public Estoque atualizarEstoque(Estoque estoque) {
 		
-		return equipService.atualizarEquipamento(equipamento);
+		return estoqueService.atualizar(estoque);
 	}
 
 	@Override
-	public List<Produto> listarItensEquipamentos(long idTipoEquipamento){
+	public List<Produto> listarProdutos(long idEstoque){
 		
-		return equipService.listarItensEquipamentos(idTipoEquipamento);
+		return produtoService.listar(idEstoque);
 		
 	}
 
 	@Override
-	public Pesquisador obterPesquisadorPorNome(String nomeUsuario) {
-		return pesquisadorService.obterPesquisadorPorNomeUsuario(nomeUsuario);
+	public Cliente obterCliente(String nomeUsuario) {
+		return clienteService.obter(nomeUsuario);
 	}
 
 	@Override
-	public Tecnico obterTecnicoPorNomeUsuario(String nomeUsuario) {
+	public Admin obterAdmin(String nomeUsuario) {
 		return tecnicoService.obterPorNomeUsuario(nomeUsuario);
+	}
+
+	@Override
+	public Reserva obterReserva(long id) {
+		return reservaService.obterReserva(id);
+	}
+
+
+	@Override
+	public void cancelarReserva(long id) {
+		reservaService.cancelarReserva(id);
+		
+	}
+
+	@Override
+	public float calcularValorReserva(Reserva reserva) {
+		return calculoValorReserva.calcular(reserva);
+	}
+
+	@Override
+	public void atualizarCliente(Cliente cliente) {
+		clienteService.atualizar(cliente);
+		
+	}
+
+	@Override
+	public void deletarCliente(long id) {
+		clienteService.deletar(id);
+		
+	}
+
+	@Override
+	public List<Cliente> listarClientes() {
+		return clienteService.listar();
+	}
+
+	@Override
+	public Produto atualizarProduto(Produto produto) {
+		return produtoService.atualizar(produto);
+	}
+
+	@Override
+	public void deletarEstoque(long id) {
+		estoqueService.deletar(id);
+		
+	}
+
+	@Override
+	public Admin cadastrarAdmin(Admin admin) {
+		return adminService.cadastrar(admin);
 	}
 
 }

@@ -16,6 +16,9 @@ import com.ufrn.cb.SisAEL.entity.Cliente;
 public interface ClienteRepository extends JpaRepository<Cliente,Long>{
 	
 	@Query("Select p from Cliente p where p.nomeUsuario = :nomeUsuario")
-	public Optional<Cliente> obterPorNomeUsuario(@Param(value = "nomeUsuario") String nomeUsuario);
+	public Optional<Cliente> 
+		obterPorNomeUsuario(@Param(value = "nomeUsuario") String nomeUsuario);
 		
 }
+
+

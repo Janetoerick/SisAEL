@@ -5,14 +5,15 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Estoque;
+import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 
 @Service
 public interface FachadaDados {
-	
 	
 	public Optional<Reserva> obterReserva(long id);
 	
@@ -22,13 +23,17 @@ public interface FachadaDados {
 	
 	public void atualizarReserva(Reserva reserva);
 	
+	public void deletarReserva(long id);
+	
 	public Optional<Produto> obterProduto(long id);
 	
 	public Produto salvarProduto(Produto produto);
 	
+	public void atualizarProduto(Produto produto);
+	
 	public List<Produto> listarProdutos();
 	
-	public List<Produto> listarProdutos(long idReserva);
+	public List<Produto> listarProdutos(long idEstoque);
 	
 	public Optional<Estoque> obterEstoque(long id);
 	
@@ -49,5 +54,16 @@ public interface FachadaDados {
 	public void deletarCliente(long id);
 	
 	public List<Cliente> listarClientes();
+	
+	public Horario salvarHorario(Horario horario);
+	
+	public List<Horario> listarHorarios();
+	
+	public void deletarHorario(long id);
+	
+	public Admin salvarAdmin(Admin admin);
+	
+	public Optional<Admin> obterAdmin(String nomeUsuario);
+	
 
 }

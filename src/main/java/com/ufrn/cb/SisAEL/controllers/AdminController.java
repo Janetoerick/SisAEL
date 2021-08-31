@@ -1,8 +1,7 @@
 package com.ufrn.cb.SisAEL.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,30 +9,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("laboratorios")
-public class LaboratorioController {
+@RequestMapping("admins")
+public class AdminController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@PostMapping("cadastrar")
-	public ResponseEntity<Laboratorio> cadastrar(@RequestBody Laboratorio lab){
+	@GetMapping("{nomeUsuario}")
+	public ResponseEntity<Admin> obter(String nomeUsuario){
 		
-
-		return ResponseEntity.ok(fachada.cadastrarLaboratorio(lab));
+		Admin admin = fachada.obterAdmin(nomeUsuario);
+		return ResponseEntity.status(HttpStatus.OK).body(admin);
 		
-	}
-	
-	@GetMapping
-	public ResponseEntity<List<Laboratorio>> listar(){
-		
-		return ResponseEntity.ok(fachada.listarLaboratorios());
 		
 	}
 	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Admin> cadastrar(@RequestBody Admin admin) {
+		
+		Admin adm = fachada.cadastrarAdmin(admin);
+		return ResponseEntity.status(HttpStatus.CREATED).body(admin);
+		
+	}
 
 }

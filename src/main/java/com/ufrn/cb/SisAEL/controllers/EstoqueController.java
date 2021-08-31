@@ -3,7 +3,9 @@ package com.ufrn.cb.SisAEL.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,30 +18,37 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("equipamentos")
-public class EquipamentoController {
+public class EstoqueController {
 	
 	@Autowired
 	FachadaService fachada;
 	
 	@PostMapping("cadastrar")
-	public ResponseEntity<Estoque> cadastrar(@RequestBody Estoque equipamento) {
+	public ResponseEntity<Estoque> cadastrar(@RequestBody Estoque estoque) {
 		
+		return ResponseEntity.ok(fachada.cadastrarEstoque(estoque));
+	}
+	
+	@PutMapping("atualizar")
+	public ResponseEntity<Estoque> 
+			atualizar(@RequestBody Estoque equipamento){
 		
-		return ResponseEntity.ok(fachada.cadastrarEquipamento(equipamento));
+		return ResponseEntity.ok(fachada.atualizarEstoque(equipamento));
+		
 	}
 	
 	@GetMapping("listar")
 	public ResponseEntity<List<Estoque>> listar(){
 		
-		return ResponseEntity.ok(fachada.listarEquipamentos());
+		return ResponseEntity.ok(fachada.listarEstoques());
 	}
 	
-	@PutMapping("atualizar")
-	public ResponseEntity<Estoque> 
-			atualizarEquipamento(@RequestBody Estoque equipamento){
+	@DeleteMapping("/deletar/{id}")
+	public ResponseEntity<Estoque> deletar(long id){
 		
-		return ResponseEntity.ok(fachada.atualizarEquipamento(equipamento));
-		
+		fachada.deletarHorario(id);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
+
 
 }

@@ -7,14 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ufrn.cb.SisAEL.entity.Tecnico;
+import com.ufrn.cb.SisAEL.entity.Admin;
 
 @Transactional
 @Repository
-public interface TecnicoRepository extends JpaRepository<Tecnico, Long>{
+public interface AdminRepository extends JpaRepository<Admin, Long>{
 	
 	@Transactional
 	@Query(value="select t from Tecnico t where t.nomeUsuario =:nomeUsuario")
-	Optional<Tecnico> obterPorNomeUsuario(String nomeUsuario);
+	Optional<Admin> obterPorNomeUsuario(String nomeUsuario);
 	
 }

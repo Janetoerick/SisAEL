@@ -4,46 +4,64 @@ import java.util.List;
 import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Tecnico;
+import com.ufrn.cb.SisAEL.entity.Admin;
+import com.ufrn.cb.SisAEL.entity.Cliente;
 
 public interface FachadaService {
 	
-	public Tecnico cadastrarTecnico(Tecnico tecnico);
-	
-	public Estoque cadastrarEquipamento(Estoque equipamento);
+	public Reserva obterReserva(long id);
 	
 	public Reserva cadastrarReserva(Reserva reserva);
 	
-	public Pesquisador cadastrarPesquisador(Pesquisador pesquisador);
-	
-	public List<Estoque> listarEquipamentos();
-	
-	public Produto cadastrarItemEquipamento(Produto item);
-	
-	public Laboratorio cadastrarLaboratorio(Laboratorio laboratorio);
-	
-	public List<Laboratorio> listarLaboratorios();
-	
-	public List<Produto> listarItensEquipamento();
-	
 	public List<Reserva> listarReservas();
+	
+	
+	public void cancelarReserva(long id);
+	
+	public float calcularValorReserva(Reserva reserva);
+	
+	public Cliente obterCliente(String nomeUsuario);
+
+	public Cliente cadastrarCliente(Cliente pesquisador);
+	
+	public void atualizarCliente(Cliente cliente);
+	
+	public void deletarCliente(long id);
+	
+	public List<Cliente> listarClientes();
+	
+	public Produto cadastrarProduto(Produto produto);
+	
+	public Produto atualizarProduto(Produto produto);
+	
+	public List<Produto> listarProdutos();
+	
+	public List<Produto> listarProdutos(long idEstoque);
+	
+	public Estoque cadastrarEstoque(Estoque estoque);
+	
+	public Estoque atualizarEstoque(Estoque estoque);
+	
+	public List<Estoque> listarEstoques();
+	
+	public void deletarEstoque(long id);
+	
+	public Admin obterAdmin(String nomeUsuario);
+	
+	public Admin cadastrarAdmin(Admin admin);
 	
 	public Horario cadastrarHorario(Horario horario);
 	
 	public List<Horario> listarHorarios();
 	
-	public void deletarHorarioDaReserva(long id);
+	public void deletarHorario(long id);
 	
-	public Estoque atualizarEquipamento(Estoque equipamento);
 	
-	public List<Produto> listarItensEquipamentos(long idTipoEquipamento);
 	
-	public Pesquisador obterPesquisadorPorNome(String nome);
 	
-	public Tecnico obterTecnicoPorNomeUsuario(String nomeUsuario);
+	
+	
 	
 	
 

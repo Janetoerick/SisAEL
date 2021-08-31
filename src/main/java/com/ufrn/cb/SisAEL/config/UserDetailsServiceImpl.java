@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
-import com.ufrn.cb.SisAEL.entity.Tecnico;
+import com.ufrn.cb.SisAEL.entity.Admin;
+import com.ufrn.cb.SisAEL.entity.Cliente;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
@@ -26,10 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		Optional<Pesquisador> dadosPesquisador;
+		Optional<Cliente> dadosPesquisador;
 
 		dadosPesquisador = 
-				fachada.obterPesquisadorPorNome(username);
+				fachada.obterCliente(username);
 		if(dadosPesquisador.isPresent()) {
 			GrantedAuthority g =new SimpleGrantedAuthority("pesquisador");
 
@@ -81,7 +81,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 			};
 		}
 		else{
-			Optional<Tecnico> dadosTecnico = fachada.obterTecnicoPorNome(username);
+			Optional<Admin> dadosTecnico = fachada.obterAdmin(username);
 			if(dadosTecnico.isPresent()) {
 				GrantedAuthority g =new SimpleGrantedAuthority("gerente");
 

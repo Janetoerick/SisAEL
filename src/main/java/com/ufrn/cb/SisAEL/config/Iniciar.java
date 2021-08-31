@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.Tecnico;
+import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @Component
@@ -27,7 +27,7 @@ public class Iniciar implements CommandLineRunner{
 //		p.setEmail("pesquisador@ufrn.edu.br");
 		
 		
-		Tecnico t = new Tecnico();
+		/*Admin t = new Admin();
 		t.setNome("Fulano Medeiros");
 		t.setNomeUsuario("tecnico");
 		t.setSenha("12345");
@@ -35,7 +35,7 @@ public class Iniciar implements CommandLineRunner{
 	
 		
 //		fachada.cadastrarPesquisador(p);
-		fachada.cadastrarTecnico(t);
+		fachada.cadastrarAdmin(t); */
 		
 	}
 

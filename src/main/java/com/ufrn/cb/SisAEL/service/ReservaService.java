@@ -16,17 +16,34 @@ public class ReservaService {
 	@Autowired
 	FachadaDados fachada;
 	
+	@Autowired
+	VerificadorProdutos verificadorProdutos;
+	
+	@Autowired
+	VerificadorDeReserva verificadorReserva;
+	
+	@Autowired
+	CalculoValorReserva calculoValorReserva;
+	
+	public Reserva obterReserva(long id) {
+		
+		return fachada.obterReserva(id).get();
+	}
+	
 	public Reserva cadastrar(Reserva reserva) {
 		
-		Optional<Reserva> o = fachada.obterReserva(reserva.getLaboratorio()
-				.getId(), reserva.getSala().getId(), reserva.getData(), reserva
-				.getHorarioDaReserva().getId());
-		
-		if(!o.isEmpty()) {
-			
-			throw new ReservaException("A reserva não foi possível."
-					+ " Tente em outro horário ou local");
+		boolean produtosOk = verificadorProdutos
+				.verificar(reserva.getProdutos());
+		if(!produtosOk) {
+			throw new ReservaException("Produto(s) da reserva inválido(s)");
 		}
+		
+		boolean reservaOk = verificadorReserva.verificar(reserva);
+		if(!reservaOk) {
+			throw new ReservaException("Não foi possível fazer a reserva.");
+		}
+		float valorReserva= calculoValorReserva.calcular(reserva);
+		reserva.setValor(valorReserva);
 		Reserva dados = fachada.salvarReserva(reserva);
 		return dados;
 		
@@ -36,6 +53,11 @@ public class ReservaService {
 		
 		return fachada.listarReservas();
 		
+	}
+	
+	public void cancelarReserva(long id) {
+		
+		fachada.deletarReserva(id);;
 	}
 
 }
