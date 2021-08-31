@@ -14,7 +14,6 @@ public class ProdutoService {
 	@Autowired
 	FachadaDados fachada;
 	
-	@Autowired
 	public Produto cadastrar(Produto produto) {
 		return fachada.salvarProduto(produto);
 	}

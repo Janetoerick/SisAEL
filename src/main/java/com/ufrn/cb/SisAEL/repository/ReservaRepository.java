@@ -13,7 +13,7 @@ import com.ufrn.cb.SisAEL.entity.Reserva;
 @Repository
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
 
-	@Query("select r.produtos from Reserva r where e.id = :id")
+	@Query("select r.produtos from Reserva r where r.id = :id")
 	List<Produto> findByProduto(@Param(value="id") long id);
 	
 }

@@ -14,7 +14,7 @@ import com.ufrn.cb.SisAEL.entity.Admin;
 public interface AdminRepository extends JpaRepository<Admin, Long>{
 	
 	@Transactional
-	@Query(value="select t from Tecnico t where t.nomeUsuario =:nomeUsuario")
+	@Query(value="select t from Admin t where t.nomeUsuario =:nomeUsuario")
 	Optional<Admin> obterPorNomeUsuario(String nomeUsuario);
 	
 }

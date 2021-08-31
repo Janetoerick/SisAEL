@@ -23,8 +23,11 @@ public class Produto {
 	
 	@ManyToOne
 	private Estoque estoque;
-
 	
+	public Produto() {
+		super();
+	}
+
 	public long getId() {
 		return id;
 	}
