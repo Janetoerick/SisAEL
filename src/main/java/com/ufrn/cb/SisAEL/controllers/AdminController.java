@@ -13,13 +13,13 @@ import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("admins")
+@RequestMapping("/admins")
 public class AdminController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@GetMapping("{nomeUsuario}")
+	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Admin> obter(String nomeUsuario){
 		
 		Admin admin = fachada.obterAdmin(nomeUsuario);

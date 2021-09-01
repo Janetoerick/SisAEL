@@ -17,13 +17,13 @@ import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("horarios")
+@RequestMapping("/horarios")
 public class HorarioController {
 	
 	@Autowired
 	private FachadaService fachada;
 	
-	@PostMapping("cadastrar")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Horario> cadastrar(@RequestBody Horario horario) {
 		
 		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
@@ -32,7 +32,7 @@ public class HorarioController {
 		
 	}
 	
-	@GetMapping
+	@GetMapping("/listar")
 	public ResponseEntity<List<Horario>> listar(){
 		
 		List<Horario> lista = fachada.listarHorarios();

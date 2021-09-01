@@ -14,25 +14,25 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
 @RestController
-@RequestMapping("produtos")
+@RequestMapping("/produtos")
 public class ProdutoController{
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@PostMapping("cadastrar")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Produto> cadastrar(@RequestBody Produto item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}
 	
-	@GetMapping
+	@GetMapping("/listar")
 	public ResponseEntity<List<Produto>> listar(){
 		
 		return ResponseEntity.ok(fachada.listarProdutos());
 	}
 	
-	@GetMapping("{idEstoque}")
+	@GetMapping("/{idEstoque}")
 	public ResponseEntity<List<Produto>> listar(@PathVariable("idEstoque") long idTipoEquipamento){
 		
 		List<Produto> itens = fachada.listarProdutos(idTipoEquipamento);

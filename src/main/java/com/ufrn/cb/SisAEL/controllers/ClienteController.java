@@ -17,13 +17,13 @@ import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("clientes")
+@RequestMapping("/clientes")
 public class ClienteController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@PostMapping("cadastrar")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Cliente> 
 				cadastrar(@RequestBody Cliente pesquisador){
 		
@@ -44,7 +44,7 @@ public class ClienteController {
 		return ResponseEntity.status(HttpStatus.OK).body(cliente);
 	}
 	
-	@GetMapping("")
+	@GetMapping("/listar")
 	public ResponseEntity<List<Cliente>> listar(){
 		List<Cliente> clientes = fachada.listarClientes();
 		return ResponseEntity.status(HttpStatus.OK).body(clientes);

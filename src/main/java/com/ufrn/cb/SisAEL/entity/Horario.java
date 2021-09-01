@@ -16,10 +16,10 @@ public class Horario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	
 	
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 

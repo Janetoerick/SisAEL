@@ -16,20 +16,20 @@ import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("reservas")
+@RequestMapping("/reservas")
 public class ReservaController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@PostMapping("cadastrar")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestBody Reserva reserva){
 		
 		Reserva dados = fachada.cadastrarReserva(reserva);
 		return ResponseEntity.status(HttpStatus.CREATED).body(dados);
 	}
 	
-	@GetMapping
+	@GetMapping("/listar")
 	public ResponseEntity<List<Reserva>> listar(){
 		
 		List<Reserva> reservas = fachada.listarReservas();

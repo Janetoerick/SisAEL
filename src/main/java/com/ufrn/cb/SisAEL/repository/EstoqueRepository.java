@@ -14,10 +14,10 @@ import com.ufrn.cb.SisAEL.entity.Estoque;
 public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
 	
 	
-	@Modifying
-	@Transactional
-	@Query("update Produto e set e.estoque.quantidade = :quantidade where e.id = :id")
-	void atualizarQuantidade(@Param(value="id") long id,
-			@Param(value="quantidade") int quantidade);
+//	@Modifying
+//	@Transactional
+//	@Query("update Produto e set e.estoque.quantidade = :quantidade where e.id = :id")
+//	void atualizarQuantidade(@Param(value="id") long id,
+//			@Param(value="quantidade") int quantidade);
 	
 }

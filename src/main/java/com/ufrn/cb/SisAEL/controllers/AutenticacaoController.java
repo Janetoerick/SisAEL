@@ -15,13 +15,13 @@ import com.ufrn.cb.SisAEL.entity.Usuario;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AutenticacaoController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@GetMapping("login")
+	@GetMapping("/login")
 	public ResponseEntity<Usuario> login() {
 		
 		Object principal = SecurityContextHolder.getContext()
@@ -54,7 +54,7 @@ public class AutenticacaoController {
 		
 	}
 	
-	@GetMapping("logout")
+	@GetMapping("/logout")
 	public ResponseEntity<String> logout() {
 		
 		return ResponseEntity.ok("{\"mensagem\" : \"logout\"}");

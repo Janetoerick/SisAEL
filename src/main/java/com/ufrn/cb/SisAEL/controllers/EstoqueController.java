@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +18,19 @@ import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("equipamentos")
+@RequestMapping("/estoque")
 public class EstoqueController {
 	
 	@Autowired
 	FachadaService fachada;
 	
-	@PostMapping("cadastrar")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<Estoque> cadastrar(@RequestBody Estoque estoque) {
 		
 		return ResponseEntity.ok(fachada.cadastrarEstoque(estoque));
 	}
 	
-	@PutMapping("atualizar")
+	@PutMapping("/atualizar")
 	public ResponseEntity<Estoque> 
 			atualizar(@RequestBody Estoque equipamento){
 		
@@ -37,10 +38,11 @@ public class EstoqueController {
 		
 	}
 	
-	@GetMapping("listar")
+	@GetMapping("/listar")
 	public ResponseEntity<List<Estoque>> listar(){
-		
-		return ResponseEntity.ok(fachada.listarEstoques());
+		List<Estoque> e = new ArrayList<>();
+		e = fachada.listarEstoques();
+		return ResponseEntity.ok(e);
 	}
 	
 	@DeleteMapping("/deletar/{id}")
