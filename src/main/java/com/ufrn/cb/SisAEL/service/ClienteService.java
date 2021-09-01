@@ -18,7 +18,7 @@ public class ClienteService {
 	FachadaDados fachada;
 	
 	@Autowired
-	VerificadorDeDadosCliente verificador;
+	VerificadorDadosCliente verificador;
 	
 	public Cliente obter(String nomeUsuario) {
 		Optional<Cliente> dado =  fachada.obterCliente(nomeUsuario);
@@ -31,9 +31,7 @@ public class ClienteService {
 	}
 	
 	public Cliente cadastrar(Cliente cliente) {
-		if(!verificador.verificar(cliente)) {
-			throw new DadosInvalidosException("Dados incorretos do cliente");
-		}
+		verificador.verificar(cliente);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		cliente.setSenha(encoder.encode(cliente.getSenha()));
 		Cliente p = fachada.salvarCliente(cliente);

@@ -5,11 +5,7 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Cliente;
 
 @Service
-public class VerificadorDeDadosCliente {
+public abstract class VerificadorDadosCliente {
 	
-	public boolean verificar(Cliente cliente) {
-		
-		return true;
-	}
-
+	public abstract boolean verificar(Cliente cliente);
 }
