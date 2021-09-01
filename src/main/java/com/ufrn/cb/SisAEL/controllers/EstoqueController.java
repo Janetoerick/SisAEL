@@ -38,8 +38,9 @@ public class EstoqueController {
 		
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public ResponseEntity<List<Estoque>> listar(){
+		System.out.println("here");
 		List<Estoque> e = new ArrayList<>();
 		e = fachada.listarEstoques();
 		return ResponseEntity.ok(e);

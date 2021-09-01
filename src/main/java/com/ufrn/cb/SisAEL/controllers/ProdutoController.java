@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Produto;
+import com.ufrn.cb.SisAEL.entity.Quarto;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
@@ -21,13 +22,13 @@ public class ProdutoController{
 	FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Produto item){
+	public ResponseEntity<Produto> cadastrar(@RequestBody Quarto item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}
 	
-	@GetMapping("/listar")
-	public ResponseEntity<List<Produto>> listar(){
+	@GetMapping
+	public ResponseEntity<List<?>> listar(){
 		
 		return ResponseEntity.ok(fachada.listarProdutos());
 	}
