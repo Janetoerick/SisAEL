@@ -32,7 +32,7 @@ public class HorarioController {
 		
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public ResponseEntity<List<Horario>> listar(){
 		
 		List<Horario> lista = fachada.listarHorarios();

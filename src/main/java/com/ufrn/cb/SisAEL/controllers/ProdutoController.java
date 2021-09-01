@@ -28,7 +28,7 @@ public class ProdutoController{
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<?>> listar(){
+	public ResponseEntity<List<Produto>> listar(){
 		
 		return ResponseEntity.ok(fachada.listarProdutos());
 	}

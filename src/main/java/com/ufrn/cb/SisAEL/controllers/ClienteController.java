@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Cliente;
+import com.ufrn.cb.SisAEL.entity.ClienteHotel;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -25,9 +26,9 @@ public class ClienteController {
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Cliente> 
-				cadastrar(@RequestBody Cliente pesquisador){
+				cadastrar(@RequestBody ClienteHotel cliente){
 		
-		Cliente p = fachada.cadastrarCliente(pesquisador);
+		Cliente p = fachada.cadastrarCliente(cliente);
 		return ResponseEntity.ok(p);
 	}
 	
@@ -38,13 +39,13 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/atualizar")
-	public ResponseEntity<Cliente> atualizar(@RequestBody Cliente cliente){
+	public ResponseEntity<Cliente> atualizar(@RequestBody ClienteHotel cliente){
 		
 		fachada.atualizarCliente(cliente);
 		return ResponseEntity.status(HttpStatus.OK).body(cliente);
 	}
 	
-	@GetMapping("/listar")
+	@GetMapping
 	public ResponseEntity<List<Cliente>> listar(){
 		List<Cliente> clientes = fachada.listarClientes();
 		return ResponseEntity.status(HttpStatus.OK).body(clientes);

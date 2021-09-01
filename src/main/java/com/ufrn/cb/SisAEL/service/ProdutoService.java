@@ -14,7 +14,13 @@ public class ProdutoService {
 	@Autowired
 	FachadaDados fachada;
 	
+	@Autowired
+	ProdutoValidator validator;
+	
 	public Produto cadastrar(Produto produto) {
+		
+		boolean produtoOk = validator.validar(produto);
+		
 		return fachada.salvarProduto(produto);
 	}
 	
