@@ -20,7 +20,7 @@ public class ProdutoService {
 	public Produto cadastrar(Produto produto) {
 		
 		boolean produtoOk = validator.validar(produto);
-		
+		produto.setDisponivel(true);
 		return fachada.salvarProduto(produto);
 	}
 	

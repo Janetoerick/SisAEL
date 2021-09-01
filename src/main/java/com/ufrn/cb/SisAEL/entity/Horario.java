@@ -10,7 +10,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="horarios")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Horario {
 	

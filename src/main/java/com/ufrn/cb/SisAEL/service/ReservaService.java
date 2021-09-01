@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
+import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
 
@@ -45,6 +46,10 @@ public class ReservaService {
 		float valorReserva= calculoValorReserva.calcular(reserva);
 		reserva.setValor(valorReserva);
 		Reserva dados = fachada.salvarReserva(reserva);
+		List<Produto> produtos = reserva.getProdutos();
+		for (Produto produto : produtos) {
+			produto.setDisponivel(false);
+		}
 		return dados;
 		
 	}
@@ -56,8 +61,17 @@ public class ReservaService {
 	}
 	
 	public void cancelarReserva(long id) {
-		
+		Reserva reserva = obterReserva(id);
+		List<Produto> produtos = reserva.getProdutos();
+		for (Produto produto : produtos) {
+			produto.setDisponivel(true);
+		}
 		fachada.deletarReserva(id);;
+	}
+	
+	public float calcularValor(Reserva reserva) {
+		
+		return calculoValorReserva.calcular(reserva);
 	}
 
 }

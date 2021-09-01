@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
+import com.ufrn.cb.SisAEL.entity.HorarioHotel;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -24,7 +25,7 @@ public class HorarioController {
 	private FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Horario> cadastrar(@RequestBody Horario horario) {
+	public ResponseEntity<Horario> cadastrar(@RequestBody HorarioHotel horario) {
 		
 		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
 		

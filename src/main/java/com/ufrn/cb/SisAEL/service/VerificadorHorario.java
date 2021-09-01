@@ -5,11 +5,8 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Horario;
 
 @Service
-public class VerificadorHorario {
+public abstract class VerificadorHorario {
 	
-	public boolean ehValido(Horario horario) {
-		
-		return true;
-	}
+	public abstract boolean ehValido(Horario horario);
 
 }

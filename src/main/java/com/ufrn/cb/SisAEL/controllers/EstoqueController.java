@@ -18,7 +18,7 @@ import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping("/estoque")
+@RequestMapping("/estoques")
 public class EstoqueController {
 	
 	@Autowired
