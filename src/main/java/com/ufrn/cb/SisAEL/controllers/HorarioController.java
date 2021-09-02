@@ -19,19 +19,10 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/horarios")
-public class HorarioController {
+public abstract class HorarioController {
 	
 	@Autowired
-	private FachadaService fachada;
-	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Horario> cadastrar(@RequestBody HorarioLaboratorio horario) {
-		
-		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(horarioDaReserva);
-		
-	}
+	protected FachadaService fachada;
 	
 	@GetMapping
 	public ResponseEntity<List<Horario>> listar(){

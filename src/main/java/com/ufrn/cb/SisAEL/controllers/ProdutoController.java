@@ -17,28 +17,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/produtos")
-public class ProdutoController{
+public abstract class ProdutoController{
 	
 	@Autowired
 	FachadaService fachada;
-	
-	@PostMapping("equipamentos/cadastrar")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Equipamento item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
-	
-	@PostMapping("laboratorios/cadastrar")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Laboratorio item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
-	
-	@PostMapping("salas/cadastrar")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Sala item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
 	
 	@GetMapping
 	public ResponseEntity<List<Produto>> listar(){
