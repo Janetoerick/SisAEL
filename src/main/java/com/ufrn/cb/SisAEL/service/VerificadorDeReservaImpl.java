@@ -1,13 +1,12 @@
 package com.ufrn.cb.SisAEL.service;
 
-import java.util.Optional;
-
+import java.util.List;
 import org.springframework.stereotype.Service;
 
+import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Quarto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.exception.DadosIncompletosException;
+import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
 
 @Service
@@ -16,18 +15,25 @@ public class VerificadorDeReservaImpl extends VerificadorDeReserva{
 	@Override
 	protected boolean verificarDisponibilidade(Reserva reserva) {
 		
-		long id = reserva.getProdutos().get(0).getId();
-		
-		Optional<Produto> opt = fachada.obterProduto(id);
-		if(opt.isEmpty()) {
-			throw new DadosIncompletosException("Não foi encontrado o quarto");
+		List<Produto> produtos = reserva.getProdutos();
+		if(produtos.size()!=3) {
+			throw new DadosInvalidosException("A reserva tem que ter três itens");
 		}
 		
-		Quarto quarto =  (Quarto) opt.get();
-		if(!quarto.isDisponivel()) {
-			throw new ReservaException("Quarto indisponível");
+		for (Produto produto : produtos) {
+			
+			if(produto.isDisponivel()) {
+				throw new ReservaException("Produto indisponível" + produto.getEstoque().getNome());
+			}
 		}
-
+		
+		List<Reserva> reservas = fachada.listarReservas();
+		
+		/*for (Reserva r : reservas) {
+			HorarioLaboratorio horario = (HorarioLaboratorio) r.getHorario();
+			if(horario.get)
+		}*/
+		
 		return true;
 	}
 
