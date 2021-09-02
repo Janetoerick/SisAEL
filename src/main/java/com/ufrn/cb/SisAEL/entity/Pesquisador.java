@@ -10,6 +10,7 @@ public class Pesquisador extends Cliente {
 	private String nome;
 	
 	private String email;
+	
 
 	public Long getMatricula() {
 		return matricula;
@@ -34,6 +35,8 @@ public class Pesquisador extends Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
 	
 	
 

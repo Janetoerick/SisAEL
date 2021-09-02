@@ -13,6 +13,7 @@ public class Laboratorio extends Produto{
 	@OneToMany
 	private List<Sala> salas;
 
+
 	public String getNome() {
 		return nome;
 	}
@@ -29,7 +30,6 @@ public class Laboratorio extends Produto{
 		this.salas = salas;
 	}
 	
-	
-	
+
 	
 }

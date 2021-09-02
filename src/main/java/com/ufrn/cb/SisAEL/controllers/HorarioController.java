@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
-import com.ufrn.cb.SisAEL.entity.HorarioHotel;
 import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
