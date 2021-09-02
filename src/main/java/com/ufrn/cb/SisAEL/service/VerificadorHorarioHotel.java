@@ -18,7 +18,7 @@ public class VerificadorHorarioHotel extends VerificadorHorario {
 		HorarioLaboratorio h = (HorarioLaboratorio) horario;
 		if(h.getData() == null || h.getHoraInicial() == null || h.getHoraFinal() == null) {
 			
-			throw new DadosIncompletosException("Hora Inicial e hora Final obrigatórios");
+			return true;
 		}
 		
 		if(h.getData().isBefore(LocalDate.now())) {

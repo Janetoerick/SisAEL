@@ -34,14 +34,12 @@ public class ReservaController {
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestParam Long idCliente, 
-			@RequestParam String data, @RequestParam String horaInicial, 
-			String horaFinal, @RequestParam String idEquipamento,
+			@RequestParam String idHorario, @RequestParam String idEquipamento,
 			String idLaboratorio, String idSala){
 		
 		Reserva reserva = new Reserva();
 		HorarioLaboratorio horarioLab = new HorarioLaboratorio();
-		horarioLab.setHoraInicial(LocalTime.parse(horaInicial));
-		horarioLab.setHoraFinal(LocalTime.parse(horaFinal));
+		horarioLab.setId(Long.parseLong(idHorario));
 		List<Produto> produtos = new ArrayList<Produto>();
 		
 		Equipamento equipamento = new Equipamento();

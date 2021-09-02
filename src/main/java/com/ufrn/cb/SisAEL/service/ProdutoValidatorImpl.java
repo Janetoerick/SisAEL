@@ -5,13 +5,15 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
+import javassist.expr.Instanceof;
+
 @Service
-public class LaboratorioValidator extends ProdutoValidator{
+public class ProdutoValidatorImpl extends ProdutoValidator{
 
 	@Override
 	public boolean validar(Produto produto) {
-		Laboratorio lab = (Laboratorio) produto;
-		return lab.getNome() != null && lab.getEstoque() != null;
+		
+		return true;
 	}
 
 }

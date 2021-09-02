@@ -47,9 +47,9 @@ public class ProdutoController{
 	}
 	
 	@GetMapping("/{idEstoque}")
-	public ResponseEntity<List<Produto>> listar(@PathVariable("idEstoque") long idTipoEquipamento){
+	public ResponseEntity<List<Produto>> listar(@PathVariable("idEstoque") long idEstoque){
 		
-		List<Produto> itens = fachada.listarProdutos(idTipoEquipamento);
+		List<Produto> itens = fachada.listarProdutos(idEstoque);
 		return ResponseEntity.ok(itens);
 		
 	}
