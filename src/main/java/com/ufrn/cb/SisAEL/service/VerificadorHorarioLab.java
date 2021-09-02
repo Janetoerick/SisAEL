@@ -10,7 +10,7 @@ import com.ufrn.cb.SisAEL.exception.DadosIncompletosException;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 
 @Service
-public class VerificadorHorarioHotel extends VerificadorHorario {
+public class VerificadorHorarioLab extends VerificadorHorario {
 
 	@Override
 	public boolean ehValido(Horario horario) {
