@@ -1,17 +1,18 @@
-package com.ufrn.cb.SisAEL.service;
+package com.ufrn.cb.SisAEL.service.Impl;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Quarto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
+import com.ufrn.cb.SisAEL.entity.impl.Quarto;
 import com.ufrn.cb.SisAEL.exception.DadosIncompletosException;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
+import com.ufrn.cb.SisAEL.service.VerificadorDeReserva;
 
 @Service
-public class VerificadorDeReservaImpl extends VerificadorDeReserva{
+public class VerificadorDeReservaHotel extends VerificadorDeReserva{
 
 	@Override
 	protected boolean verificarDisponibilidade(Reserva reserva) {

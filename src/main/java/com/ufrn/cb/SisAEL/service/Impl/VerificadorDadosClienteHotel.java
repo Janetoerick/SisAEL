@@ -1,10 +1,11 @@
-package com.ufrn.cb.SisAEL.service;
+package com.ufrn.cb.SisAEL.service.Impl;
 
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.ClienteHotel;
+import com.ufrn.cb.SisAEL.entity.impl.ClienteHotel;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
+import com.ufrn.cb.SisAEL.service.VerificadorDadosCliente;
 
 @Service
 public class VerificadorDadosClienteHotel extends VerificadorDadosCliente {

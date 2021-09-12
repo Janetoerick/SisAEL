@@ -7,11 +7,8 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Service
-public class VerificadorProdutos {
+public abstract class VerificadorProdutos {
 	
-	public boolean verificar(List<Produto> produtos) {
-		
-		return true;
-	}
+	public abstract boolean verificar(List<Produto> produtos);
 
 }

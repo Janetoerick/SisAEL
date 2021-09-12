@@ -14,35 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.ClienteHotel;
+import com.ufrn.cb.SisAEL.entity.impl.ClienteHotel;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController {
+public abstract class ClienteController {
 	
 	@Autowired
-	FachadaService fachada;
-	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Cliente> 
-				cadastrar(@RequestBody ClienteHotel cliente){
-		
-		Cliente p = fachada.cadastrarCliente(cliente);
-		return ResponseEntity.ok(p);
-	}
+	protected FachadaService fachada;
 	
 	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Cliente> obterPorNomeUsuario(@PathVariable(value="nomeUsuario") String nome){
 		
 		return ResponseEntity.ok(fachada.obterCliente(nome));
-	}
-	
-	@PutMapping("/atualizar")
-	public ResponseEntity<Cliente> atualizar(@RequestBody ClienteHotel cliente){
-		
-		fachada.atualizarCliente(cliente);
-		return ResponseEntity.status(HttpStatus.OK).body(cliente);
 	}
 	
 	@GetMapping

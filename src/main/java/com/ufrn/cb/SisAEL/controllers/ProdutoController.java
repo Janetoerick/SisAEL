@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Quarto;
+import com.ufrn.cb.SisAEL.entity.impl.Quarto;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
 @RestController
 @RequestMapping("/produtos")
-public class ProdutoController{
+public abstract class ProdutoController{
 	
 	@Autowired
-	FachadaService fachada;
+	protected FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Produto> cadastrar(@RequestBody Quarto item){

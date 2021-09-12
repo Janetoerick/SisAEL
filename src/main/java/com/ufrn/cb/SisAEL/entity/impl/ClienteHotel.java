@@ -1,6 +1,8 @@
-package com.ufrn.cb.SisAEL.entity;
+package com.ufrn.cb.SisAEL.entity.impl;
 
 import javax.persistence.Entity;
+
+import com.ufrn.cb.SisAEL.entity.Cliente;
 
 @Entity
 public class ClienteHotel extends Cliente{

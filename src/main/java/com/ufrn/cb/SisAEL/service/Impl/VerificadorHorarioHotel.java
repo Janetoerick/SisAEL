@@ -1,11 +1,12 @@
-package com.ufrn.cb.SisAEL.service;
+package com.ufrn.cb.SisAEL.service.Impl;
 
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
-import com.ufrn.cb.SisAEL.entity.HorarioHotel;
+import com.ufrn.cb.SisAEL.entity.impl.HorarioHotel;
 import com.ufrn.cb.SisAEL.exception.DadosIncompletosException;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
+import com.ufrn.cb.SisAEL.service.VerificadorHorario;
 
 @Service
 public class VerificadorHorarioHotel extends VerificadorHorario {

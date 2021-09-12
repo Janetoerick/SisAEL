@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
-import com.ufrn.cb.SisAEL.entity.HorarioHotel;
+import com.ufrn.cb.SisAEL.entity.impl.HorarioHotel;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/horarios")
-public class HorarioController {
+public abstract class HorarioController {
 	
 	@Autowired
-	private FachadaService fachada;
+	protected FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Horario> cadastrar(@RequestBody HorarioHotel horario) {
