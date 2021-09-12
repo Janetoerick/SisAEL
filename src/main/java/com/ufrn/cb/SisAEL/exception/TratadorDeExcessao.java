@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class TratadorDeExcessao{
 	
+
 	@ExceptionHandler(value=EntidadeNaoEncontradaException.class)
 	public ResponseEntity<ErroPadrao> 
 		entidadeNaoEncontrada(EntidadeNaoEncontradaException e,

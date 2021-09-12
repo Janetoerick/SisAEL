@@ -19,15 +19,29 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/clientes")
-public abstract class ClienteController {
-	
-	@Autowired
-	FachadaService fachada;
+public class ClienteControllerLab extends Controller {
 	
 	@GetMapping("/{nomeUsuario}")
-	public ResponseEntity<Cliente> obterPorNomeUsuario(@PathVariable(value="nomeUsuario") String nome){
+	public ResponseEntity<Cliente> obter
+							(@PathVariable(value="nomeUsuario") String nome){
 		
 		return ResponseEntity.ok(fachada.obterCliente(nome));
+	}
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Pesquisador> cadastrar(@RequestBody Pesquisador pesquisador){
+		
+		Pesquisador p = (Pesquisador) fachada.cadastrarCliente(pesquisador);
+		return ResponseEntity.status(HttpStatus.CREATED).body(p);
+		
+	}
+	
+	@PostMapping("/atualizar")
+	public ResponseEntity<Pesquisador> atualizar(@RequestBody Pesquisador pesquisador){
+		
+		fachada.atualizarCliente(pesquisador);
+		return ResponseEntity.status(HttpStatus.OK).body(pesquisador);
+		
 	}
 	
 	@GetMapping

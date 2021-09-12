@@ -10,19 +10,22 @@ import com.ufrn.cb.SisAEL.entity.Sala;
 @Service
 public class ProdutoValidatorImpl extends ProdutoValidator{
 
+	private ProdutoValidatorContext context;
+	
 	public boolean validar(Produto produto) {
 		
+		context = new ProdutoValidatorContext();
 		if(produto instanceof Equipamento) {
-			Equipamento e = (Equipamento) produto;
-			return e.getTombamento() > 0;
-		} else if (produto instanceof Sala) {
-			Sala s = (Sala) produto;
-			return s.getNome() != null;
-		} else if (produto instanceof Laboratorio) {
-			Laboratorio l = (Laboratorio) produto;
-			return l.getNome() != null && l.getSalas() != null;
+			context.setStrategy(new EquipamentoValidatorStrategy());
+		}
+		else if(produto instanceof Laboratorio) {
+			context.setStrategy(new LaboratorioValidatorStrategy());
+		}
+		else {
+			context.setStrategy(new SalaValidatorStrategy());
 		}
 		
-		return false;
+		return context.validar(produto);
+		
 	}
 }

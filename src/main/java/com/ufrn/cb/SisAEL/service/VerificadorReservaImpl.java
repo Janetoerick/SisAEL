@@ -2,37 +2,36 @@ package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-
+import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
 
 @Service
-public class VerificadorDeReservaImpl extends VerificadorDeReserva{
+public class VerificadorReservaImpl extends VerificadorReserva{
 
 	@Override
 	protected boolean verificarDisponibilidade(Reserva reserva) {
 		
 		List<Produto> produtos = reserva.getProdutos();
-		if(produtos.size()!=3) {
-			throw new DadosInvalidosException("A reserva tem que ter três itens");
-		}
-		
+
 		for (Produto produto : produtos) {
-			
-			if(produto.isDisponivel()) {
-				throw new ReservaException("Produto indisponível" + produto.getEstoque().getNome());
+			Produto p = fachada.obterProduto(produto.getId()).get();
+			if(!p.isDisponivel()) {
+				throw new ReservaException("Produto indisponível");
 			}
 		}
 		
 		List<Reserva> reservas = fachada.listarReservas();
 		
-		/*for (Reserva r : reservas) {
+		for (Reserva r : reservas) {
 			HorarioLaboratorio horario = (HorarioLaboratorio) r.getHorario();
-			if(horario.get)
-		}*/
-		
+			if (horario.equals(reserva.getHorario())) {
+				throw new ReservaException("A Reserva para esta "
+						+ "data e horário está indisponível");
+			}
+		}
 		return true;
 	}
 

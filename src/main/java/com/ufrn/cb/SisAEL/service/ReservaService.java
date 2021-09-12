@@ -1,11 +1,8 @@
 package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
@@ -21,7 +18,7 @@ public class ReservaService {
 	VerificadorProdutos verificadorProdutos;
 	
 	@Autowired
-	VerificadorDeReserva verificadorReserva;
+	VerificadorReserva verificadorReserva;
 	
 	@Autowired
 	CalculoValorReserva calculoValorReserva;

@@ -38,4 +38,18 @@ public class HorarioLaboratorio extends Horario{
 		this.horaFinal = horaFinal;
 	}
 	
+	public boolean equals(Object outro) {
+		HorarioLaboratorio hLab = (HorarioLaboratorio) outro;
+		return this.data.equals(hLab.getData())
+			   && this.horaInicial.equals(hLab.getHoraInicial())
+			   && this.horaFinal.equals(hLab.getHoraFinal());
+	}
+	
+	@Override
+	public String toString() {
+		return this.data.toString() + "  " + " inicio: " 
+					+ this.getHoraInicial().toString() + " fim: "
+					+ this.getHoraFinal().toString();
+	}
+	
 }

@@ -2,14 +2,13 @@ package com.ufrn.cb.SisAEL.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.exception.ColisaoDeHorarioException;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
+import com.ufrn.cb.SisAEL.exception.EntidadeNaoEncontradaException;
 
 @Service
 public class HorarioService {
@@ -20,12 +19,26 @@ public class HorarioService {
 	@Autowired
 	private VerificadorHorario verificadorHorario;
 	
+	public Horario obter(long id) {
+		
+		Horario h = fachada.obterHorario(id);
+		if(h == null) {
+			throw new EntidadeNaoEncontradaException("Horario não encontrado");
+		}
+		return h;
+	}
+	
 	public Horario cadastrar(Horario horario) {
 		
 		boolean horarioValido = verificadorHorario.ehValido(horario);
 		if(!horarioValido) {
 			
 			throw new DadosInvalidosException("Horário Inválido");
+		}
+		
+		boolean semColisoes = verificadorHorario.semChoqueDeHorario(horario);
+		if(!semColisoes) {
+			throw new ColisaoDeHorarioException("Choque de Horários");
 		}
 		
 		return fachada.salvarHorario(horario);

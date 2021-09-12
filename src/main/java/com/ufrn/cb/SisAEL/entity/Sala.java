@@ -1,12 +1,12 @@
 package com.ufrn.cb.SisAEL.entity;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class Sala extends Produto{
 	
+	@Column(nullable = false)
 	private String nome;
 	
 

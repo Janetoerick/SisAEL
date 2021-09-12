@@ -35,6 +35,8 @@ public interface FachadaDados {
 	
 	public List<Produto> listarProdutos(long idEstoque);
 	
+	public void deletarProduto(long id);
+	
 	public Optional<Estoque> obterEstoque(long id);
 	
 	public Estoque salvarEstoque(Estoque estoque);
@@ -56,6 +58,8 @@ public interface FachadaDados {
 	public List<Cliente> listarClientes();
 	
 	public Horario salvarHorario(Horario horario);
+	
+	public Horario obterHorario(long id);
 	
 	public List<Horario> listarHorarios();
 	

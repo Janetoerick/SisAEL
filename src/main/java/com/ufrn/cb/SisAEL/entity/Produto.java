@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public class Produto {
 	
 	private boolean disponivel;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REFRESH)
 	private Estoque estoque;
 
 	

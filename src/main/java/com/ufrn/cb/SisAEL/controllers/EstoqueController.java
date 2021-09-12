@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Estoque;
@@ -19,10 +20,7 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/estoques")
-public class EstoqueController {
-	
-	@Autowired
-	FachadaService fachada;
+public class EstoqueController extends Controller{
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Estoque> cadastrar(@RequestBody Estoque estoque) {
@@ -32,9 +30,9 @@ public class EstoqueController {
 	
 	@PutMapping("/atualizar")
 	public ResponseEntity<Estoque> 
-			atualizar(@RequestBody Estoque equipamento){
+			atualizar(@RequestBody Estoque estoque){
 		
-		return ResponseEntity.ok(fachada.atualizarEstoque(equipamento));
+		return ResponseEntity.ok(fachada.atualizarEstoque(estoque));
 		
 	}
 	
@@ -46,7 +44,7 @@ public class EstoqueController {
 	}
 	
 	@DeleteMapping("/deletar/{id}")
-	public ResponseEntity<Estoque> deletar(long id){
+	public ResponseEntity<Estoque> deletar(@RequestParam long id){
 		
 		fachada.deletarHorario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

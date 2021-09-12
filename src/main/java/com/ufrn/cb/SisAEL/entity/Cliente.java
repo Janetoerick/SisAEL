@@ -26,6 +26,7 @@ public class Cliente implements Usuario{
 	@Column(nullable = false)
 	private String senha;
 	
+	
 	private String cargo;
 
 	@Override
@@ -46,8 +47,7 @@ public class Cliente implements Usuario{
 
 	@Override
 	public void setNome(String nome) {
-		this.nome = nome;
-		
+		this.nome = nome;	
 	}
 
 	@Override
@@ -79,8 +79,8 @@ public class Cliente implements Usuario{
 	}
 
 	@Override
-	public void setCargo(String role) {
-		this.cargo = role;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 		
 	}
 	

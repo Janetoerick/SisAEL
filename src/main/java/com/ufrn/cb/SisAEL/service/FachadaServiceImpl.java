@@ -36,13 +36,10 @@ public class FachadaServiceImpl implements FachadaService{
 	@Autowired
 	AdminService adminService;
 	
-	@Autowired
-	AdminService tecnicoService;
-	
 	
 	public Admin cadastrarTecnico(Admin tecnico) {
 		
-		return tecnicoService.cadastrar(tecnico);
+		return adminService.cadastrar(tecnico);
 	}
 	
 	@Override
@@ -76,6 +73,12 @@ public class FachadaServiceImpl implements FachadaService{
 	}
 	
 	@Override
+	public Produto obterProduto(long id) {
+		
+		return produtoService.obter(id);
+	}
+	
+	@Override
 	public Produto cadastrarProduto(Produto item) {
 		return produtoService.cadastrar(item);
 	}
@@ -84,6 +87,12 @@ public class FachadaServiceImpl implements FachadaService{
 	public List<Produto> listarProdutos(){
 		
 		return produtoService.listar();
+	}
+	
+	@Override
+	public Horario obterHorario(long id) {
+		
+		return horarioService.obter(id);
 	}
 	
 	@Override
@@ -117,6 +126,12 @@ public class FachadaServiceImpl implements FachadaService{
 		return produtoService.listar(idEstoque);
 		
 	}
+	
+	@Override
+	public void deletarProduto(long idProduto) {
+		
+		produtoService.deletar(idProduto);
+	}
 
 	@Override
 	public Cliente obterCliente(String nomeUsuario) {
@@ -125,7 +140,7 @@ public class FachadaServiceImpl implements FachadaService{
 
 	@Override
 	public Admin obterAdmin(String nomeUsuario) {
-		return tecnicoService.obterPorNomeUsuario(nomeUsuario);
+		return adminService.obterPorNomeUsuario(nomeUsuario);
 	}
 
 	@Override

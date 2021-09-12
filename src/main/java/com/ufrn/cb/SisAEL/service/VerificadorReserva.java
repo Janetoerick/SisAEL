@@ -8,7 +8,7 @@ import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 
 @Service
-public abstract class VerificadorDeReserva{
+public abstract class VerificadorReserva{
 	
 	@Autowired
 	protected FachadaDados fachada;
@@ -16,24 +16,20 @@ public abstract class VerificadorDeReserva{
 	@Autowired
 	VerificadorHorario verificadorHorario;
 	
-	public final boolean verificar(Reserva reserva) {
-		
-		if(reserva.getCliente()== null || reserva.getProdutos()==null ||
-			reserva.getProdutos().size()<1) {
-			throw new DadosInvalidosException("Dados da reserva inválido");
-		}
+	protected final boolean verificar(Reserva reserva) {
 		boolean horarioOK = verificarHorario(reserva);
 		if(!horarioOK) {
 			throw new DadosInvalidosException("Horário Inválido");
 		}
+		
 		return verificarDisponibilidade(reserva);
-		
-		
+	
 	}
 	
 	private boolean verificarHorario(Reserva reserva) {
 		
-		return verificadorHorario.ehValido(reserva.getHorario());
+		boolean horarioValido = verificadorHorario.ehValido(reserva.getHorario());
+		return horarioValido;
 	}
 	
 	protected abstract boolean verificarDisponibilidade(Reserva reserva);

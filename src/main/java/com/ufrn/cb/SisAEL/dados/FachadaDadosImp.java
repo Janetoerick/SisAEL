@@ -90,7 +90,13 @@ public class FachadaDadosImp implements FachadaDados {
 
 	@Override
 	public List<Produto> listarProdutos(long idEstoque) {
-		return produtoRep.listar(idEstoque);
+		return produtoRep.listarPorEstoque(idEstoque);
+	}
+	
+	@Override
+	public void deletarProduto(long id) {
+		
+		produtoRep.deleteById(id);
 	}
 
 	@Override
@@ -146,6 +152,12 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		return clienteRep.findAll();
 	}
+	
+	@Override
+	public Horario obterHorario(long id) {
+		
+		return horarioRep.findById(id).get();
+	}
 
 	@Override
 	public Horario salvarHorario(Horario horario) {
@@ -161,7 +173,7 @@ public class FachadaDadosImp implements FachadaDados {
 
 	@Override
 	public void deletarHorario(long id) {
-		// TODO Auto-generated method stub
+		
 		horarioRep.deleteById(id);
 	}
 

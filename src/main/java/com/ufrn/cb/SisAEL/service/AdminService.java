@@ -17,7 +17,7 @@ public class AdminService {
 	@Autowired
 	FachadaDados fachada;
 	
-	Admin obterPorNomeUsuario(String nomeUsuario) {
+	public Admin obterPorNomeUsuario(String nomeUsuario) {
 		
 		Optional<Admin> opt = fachada.obterAdmin(nomeUsuario);
 		if(opt.isEmpty()) {
@@ -28,11 +28,11 @@ public class AdminService {
 		}
 	}
 	
-	Admin cadastrar(Admin tecnico) {
+	public  Admin cadastrar(Admin admin) {
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		tecnico.setSenha(encoder.encode(tecnico.getSenha()));
-		return fachada.salvarAdmin(tecnico);
+		admin.setSenha(encoder.encode(admin.getSenha()));
+		return fachada.salvarAdmin(admin);
 		
 	}
 

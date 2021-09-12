@@ -2,6 +2,7 @@ package com.ufrn.cb.SisAEL.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -10,7 +11,7 @@ public class Laboratorio extends Produto{
 	
 	private String nome;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Sala> salas;
 
 

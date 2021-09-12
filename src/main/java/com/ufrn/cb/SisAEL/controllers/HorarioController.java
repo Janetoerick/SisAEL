@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +20,32 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/horarios")
-public abstract class HorarioController {
+public class HorarioController extends Controller{
 	
-	@Autowired
-	protected FachadaService fachada;
+	@PostMapping("/cadastrar")
+	public ResponseEntity<HorarioLaboratorio> cadastrar
+									(@RequestBody HorarioLaboratorio horario){
+		
+		HorarioLaboratorio h = (HorarioLaboratorio) fachada.cadastrarHorario(horario);
+		return ResponseEntity.status(HttpStatus.CREATED).body(h);
+	}
 	
 	@GetMapping
-	public ResponseEntity<List<Horario>> listar(){
+	public ResponseEntity<List<HorarioLaboratorio>> listar(){
 		
 		List<Horario> lista = fachada.listarHorarios();
+		ArrayList<HorarioLaboratorio> lista2 = 
+				new ArrayList<HorarioLaboratorio>();
 		
-		return ResponseEntity.status(HttpStatus.OK).body(lista);
+		for(Horario l:lista) {
+			lista2.add((HorarioLaboratorio)l);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(lista2);
 	}
 	
 	@DeleteMapping("deletar/{id}")
-	public ResponseEntity<Horario> deletar(@PathVariable long id){
+	public ResponseEntity<HorarioLaboratorio> deletar(@PathVariable long id){
 		
 		fachada.deletarHorario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

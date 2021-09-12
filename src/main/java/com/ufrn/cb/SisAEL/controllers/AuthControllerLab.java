@@ -1,7 +1,6 @@
 package com.ufrn.cb.SisAEL.controllers;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,14 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Admin;
 import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Usuario;
-import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/auth")
-public class AutenticacaoController {
-	
-	@Autowired
-	FachadaService fachada;
+public class AuthControllerLab extends Controller {
 	
 	@GetMapping("/login")
 	public ResponseEntity<Usuario> login() {
@@ -32,26 +27,19 @@ public class AutenticacaoController {
 			Object[] auths = userD.getAuthorities().toArray();
 			String tipoUsuario = auths[0].toString();
 			System.out.println(tipoUsuario);
-			if(tipoUsuario.equals("gerente")) {
-				Admin t = fachada.obterAdmin(userD.getUsername());
-				return ResponseEntity.status(HttpStatus.OK).body(t);
+			if(tipoUsuario.equals("admin")){
+				Admin adm = fachada.obterAdmin(userD.getUsername());
+				return ResponseEntity.status(HttpStatus.OK).body(adm);
 			}else {
 				
 				Cliente pesquisador = fachada.obterCliente(userD.getUsername());
 				return ResponseEntity.status(HttpStatus.OK).body(pesquisador);
-
 			}
-
-			
 		}else {
 			String nomeUsuario = principal.toString();
 			System.out.println(nomeUsuario);
 			return null;
-			
-			
 		}
-		
-		
 	}
 	
 	@GetMapping("/logout")

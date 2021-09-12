@@ -14,5 +14,5 @@ import com.ufrn.cb.SisAEL.entity.Produto;
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	@Query("select p from Produto p where p.estoque.id = :idEstoque")
-	public List<Produto> listar(@Param(value="idEstoque")long idEstoque);
+	public List<Produto> listarPorEstoque(@Param(value="idEstoque")long idEstoque);
 }

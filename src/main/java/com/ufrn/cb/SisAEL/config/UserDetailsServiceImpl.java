@@ -26,12 +26,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-		Optional<Cliente> dadosPesquisador;
+		Optional<Cliente> dadosCliente;
 
-		dadosPesquisador = 
+		dadosCliente = 
 				fachada.obterCliente(username);
-		if(dadosPesquisador.isPresent()) {
-			GrantedAuthority g =new SimpleGrantedAuthority("pesquisador");
+		if(dadosCliente.isPresent()) {
+			GrantedAuthority g =new SimpleGrantedAuthority("cliente");
 
 			return new UserDetails() {
 
@@ -60,13 +60,13 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 				@Override
 				public String getUsername() {
 
-					return dadosPesquisador.get().getNomeUsuario();
+					return dadosCliente.get().getNomeUsuario();
 				}
 
 				@Override
 				public String getPassword() {
 
-					return dadosPesquisador.get().getSenha();
+					return dadosCliente.get().getSenha();
 				}
 
 				@Override
@@ -83,7 +83,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		else{
 			Optional<Admin> dadosTecnico = fachada.obterAdmin(username);
 			if(dadosTecnico.isPresent()) {
-				GrantedAuthority g =new SimpleGrantedAuthority("gerente");
+				GrantedAuthority g =new SimpleGrantedAuthority("admin");
 
 				return new UserDetails() {
 

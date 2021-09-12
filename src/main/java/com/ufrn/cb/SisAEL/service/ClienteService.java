@@ -8,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.exception.EntidadeNaoEncontradaException;
 
 @Service

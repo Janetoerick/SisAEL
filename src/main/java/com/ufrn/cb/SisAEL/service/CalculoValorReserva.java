@@ -7,9 +7,6 @@ import com.ufrn.cb.SisAEL.entity.Reserva;
 @Service
 public abstract class CalculoValorReserva {
 	
-	public float calcular(Reserva reserva) {
-		
-		return 0f;
-	}
+	public abstract float calcular(Reserva reserva);
 
 }
