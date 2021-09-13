@@ -21,12 +21,6 @@ public abstract class ProdutoController{
 	@Autowired
 	protected FachadaService fachada;
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Quarto item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
-	
 	@GetMapping
 	public ResponseEntity<List<Produto>> listar(){
 		

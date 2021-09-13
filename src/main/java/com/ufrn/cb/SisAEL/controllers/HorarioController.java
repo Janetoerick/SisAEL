@@ -24,15 +24,6 @@ public abstract class HorarioController {
 	@Autowired
 	protected FachadaService fachada;
 	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Horario> cadastrar(@RequestBody HorarioHotel horario) {
-		
-		Horario horarioDaReserva= fachada.cadastrarHorario(horario);
-		
-		return ResponseEntity.status(HttpStatus.CREATED).body(horarioDaReserva);
-		
-	}
-	
 	@GetMapping
 	public ResponseEntity<List<Horario>> listar(){
 		
