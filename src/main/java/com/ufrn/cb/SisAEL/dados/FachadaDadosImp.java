@@ -89,8 +89,8 @@ public class FachadaDadosImp implements FachadaDados {
 	}
 
 	@Override
-	public List<Produto> listarProdutos(long idReserva) {
-		return reservaRep.findByProduto(idReserva);
+	public List<Produto> listarProdutos(long idEstoque) {
+		return produtoRep.listar(idEstoque);
 	}
 
 	@Override

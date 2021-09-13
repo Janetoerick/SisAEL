@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Repository
@@ -15,4 +16,6 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 	
 	@Query("select p from Produto p where p.estoque.id = :idEstoque")
 	public List<Produto> listar(@Param(value="idEstoque")long idEstoque);
+	
+	
 }
