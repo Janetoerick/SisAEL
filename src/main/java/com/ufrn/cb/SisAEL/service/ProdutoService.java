@@ -38,4 +38,8 @@ public class ProdutoService {
 		
 		return fachada.listarProdutos(idEstoque);
 	}
+	
+	public void remover(long id) {
+		fachada.deletarProduto(id);
+	}
 }

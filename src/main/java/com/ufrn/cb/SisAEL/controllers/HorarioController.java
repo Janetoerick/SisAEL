@@ -33,7 +33,7 @@ public abstract class HorarioController {
 	}
 	
 	@DeleteMapping("deletar/{id}")
-	public ResponseEntity<Horario> deletar(@PathVariable long id){
+	public ResponseEntity<Horario> deletar(@PathVariable(name="id") long id){
 		
 		fachada.deletarHorario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

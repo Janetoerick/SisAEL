@@ -177,6 +177,11 @@ public class FachadaDadosImp implements FachadaDados {
 		return adminRep.obterPorNomeUsuario(nomeUsuario);
 	}
 
+	@Override
+	public void deletarProduto(long id) {
+		produtoRep.deleteById(id);
+	}
+
 	
 
 

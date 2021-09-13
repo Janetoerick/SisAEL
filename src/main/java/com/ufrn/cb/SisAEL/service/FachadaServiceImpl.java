@@ -178,4 +178,10 @@ public class FachadaServiceImpl implements FachadaService{
 		return adminService.cadastrar(admin);
 	}
 
+	@Override
+	public void deletarProduto(long id) {
+		produtoService.remover(id);
+		
+	}
+
 }

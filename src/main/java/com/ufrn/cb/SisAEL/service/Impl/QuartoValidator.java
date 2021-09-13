@@ -20,7 +20,7 @@ public class QuartoValidator extends ProdutoValidator{
 				throw new DadosInvalidosException("Dados de quantidade invalidos!!");
 			}
 		}
-		throw new DadosInvalidosException("Objeto passa nao eh um Quarto!!");
+		throw new DadosInvalidosException("Objeto passado nao eh um Quarto!!");
 	}
 
 }

@@ -38,7 +38,7 @@ public abstract class ClienteController {
 	}
 	
 	@DeleteMapping("remover/{id}")
-	public ResponseEntity<Cliente> deletar(long id){
+	public ResponseEntity<Cliente> deletar(@PathVariable(value="id") long id){
 		fachada.deletarCliente(id);
 		return ResponseEntity.ok(null);
 		
