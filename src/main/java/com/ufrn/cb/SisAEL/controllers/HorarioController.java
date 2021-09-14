@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.entity.Horario;
-import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -33,7 +32,7 @@ public abstract class HorarioController {
 	}
 	
 	@DeleteMapping("deletar/{id}")
-	public ResponseEntity<Horario> deletar(@PathVariable long id){
+	public ResponseEntity<Horario> deletar(@PathVariable(name="id") long id){
 		
 		fachada.deletarHorario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

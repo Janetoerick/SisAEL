@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -22,7 +21,7 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 public abstract class ClienteController {
 	
 	@Autowired
-	FachadaService fachada;
+	protected FachadaService fachada;
 	
 	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Cliente> obterPorNomeUsuario(@PathVariable(value="nomeUsuario") String nome){
@@ -38,7 +37,7 @@ public abstract class ClienteController {
 	}
 	
 	@DeleteMapping("remover/{id}")
-	public ResponseEntity<Cliente> deletar(long id){
+	public ResponseEntity<Cliente> deletar(@PathVariable(value="id") long id){
 		fachada.deletarCliente(id);
 		return ResponseEntity.ok(null);
 		

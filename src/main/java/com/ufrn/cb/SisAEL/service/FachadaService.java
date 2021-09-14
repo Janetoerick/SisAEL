@@ -16,12 +16,13 @@ public interface FachadaService {
 	
 	public List<Reserva> listarReservas();
 	
-	
 	public void cancelarReserva(long id);
 	
 	public float calcularValorReserva(Reserva reserva);
 	
 	public Cliente obterCliente(String nomeUsuario);
+	
+	public Cliente obterCliente(long id);
 
 	public Cliente cadastrarCliente(Cliente pesquisador);
 	
@@ -35,9 +36,13 @@ public interface FachadaService {
 	
 	public Produto atualizarProduto(Produto produto);
 	
+	public Produto obterProduto(long id);
+	
 	public List<Produto> listarProdutos();
 	
 	public List<Produto> listarProdutos(long idEstoque);
+	
+	public void deletarProduto(long id);
 	
 	public Estoque cadastrarEstoque(Estoque estoque);
 	
@@ -53,16 +58,10 @@ public interface FachadaService {
 	
 	public Horario cadastrarHorario(Horario horario);
 	
+	public Horario obterHorario(long id);
+	
 	public List<Horario> listarHorarios();
 	
 	public void deletarHorario(long id);
 	
-	
-	
-	
-	
-	
-	
-	
-
 }

@@ -35,6 +35,8 @@ public interface FachadaDados {
 	
 	public List<Produto> listarProdutos(long idEstoque);
 	
+	public void deletarProduto(long id);
+	
 	public Optional<Estoque> obterEstoque(long id);
 	
 	public Estoque salvarEstoque(Estoque estoque);
@@ -46,6 +48,8 @@ public interface FachadaDados {
 	public void deletarEstoque(long id);
 	
 	public Optional<Cliente> obterCliente(String nomeUsuario);
+	
+	public Optional<Cliente> obterCliente(long id);
 	
 	public Cliente salvarCliente(Cliente cliente);
 	
@@ -60,6 +64,8 @@ public interface FachadaDados {
 	public List<Horario> listarHorarios();
 	
 	public void deletarHorario(long id);
+	
+	public Optional<Horario> obterHorario(long id);
 	
 	public Admin salvarAdmin(Admin admin);
 	

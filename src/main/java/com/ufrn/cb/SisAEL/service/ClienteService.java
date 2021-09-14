@@ -30,6 +30,15 @@ public class ClienteService {
 		}
 	}
 	
+	public Cliente obter(long id) {
+		Optional<Cliente> dado =  fachada.obterCliente(id);
+		if(dado.isPresent()) {
+			return dado.get();
+		}else {
+			throw new EntidadeNaoEncontradaException("Este usuário não foi encontrado");
+		}
+	}
+	
 	public Cliente cadastrar(Cliente cliente) {
 		verificador.verificar(cliente);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
