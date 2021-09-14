@@ -49,6 +49,8 @@ public interface FachadaDados {
 	
 	public Optional<Cliente> obterCliente(String nomeUsuario);
 	
+	public Optional<Cliente> obterCliente(long id);
+	
 	public Cliente salvarCliente(Cliente cliente);
 	
 	public void atualizarCliente(Cliente cliente);
@@ -62,6 +64,8 @@ public interface FachadaDados {
 	public List<Horario> listarHorarios();
 	
 	public void deletarHorario(long id);
+	
+	public Optional<Horario> obterHorario(long id);
 	
 	public Admin salvarAdmin(Admin admin);
 	
