@@ -44,7 +44,7 @@ public class ReservaController {
 		List<Produto> mesas = new ArrayList<>();
 		for(String s: idProduto) {
 			Produto produto = fachada.obterProduto(Long.parseLong(s));
-			mesas.add(produto);
+			mesas.add(produto); 
 		}
 		
 		
