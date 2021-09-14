@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Service
-public class VerificadorProdutos {
+public abstract class VerificadorProdutos {
 	
-	public boolean verificar(List<Produto> produtos) {
-		
-		return true;
-	}
+	protected FachadaDados fachada;
+	
+	public abstract boolean verificar(List<Produto> produtos);
 
 }

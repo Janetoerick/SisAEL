@@ -1,9 +1,11 @@
-package com.ufrn.cb.SisAEL.entity;
+package com.ufrn.cb.SisAEL.entity.Impl;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.Entity;
+
+import com.ufrn.cb.SisAEL.entity.Horario;
 
 @Entity
 public class HorarioLaboratorio extends Horario{

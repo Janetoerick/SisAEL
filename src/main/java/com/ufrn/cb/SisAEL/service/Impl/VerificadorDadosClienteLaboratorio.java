@@ -1,10 +1,11 @@
-package com.ufrn.cb.SisAEL.service;
+package com.ufrn.cb.SisAEL.service.Impl;
 
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
+import com.ufrn.cb.SisAEL.entity.Impl.Pesquisador;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
+import com.ufrn.cb.SisAEL.service.VerificadorDadosCliente;
 
 @Service
 public class VerificadorDadosClienteLaboratorio extends VerificadorDadosCliente {

@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Sala;
+import com.ufrn.cb.SisAEL.entity.Impl.Equipamento;
+import com.ufrn.cb.SisAEL.entity.Impl.HorarioLaboratorio;
+import com.ufrn.cb.SisAEL.entity.Impl.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Impl.Pesquisador;
+import com.ufrn.cb.SisAEL.entity.Impl.Sala;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController

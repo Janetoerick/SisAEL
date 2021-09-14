@@ -20,7 +20,7 @@ import com.ufrn.cb.SisAEL.repository.ProdutoRepository;
 import com.ufrn.cb.SisAEL.repository.ReservaRepository;
 
 @Service
-public class FachadaDadosImp implements FachadaDados {
+public class FachadaDadosImpl implements FachadaDados {
 
 	@Autowired
 	ClienteRepository clienteRep;
@@ -177,17 +177,10 @@ public class FachadaDadosImp implements FachadaDados {
 		return adminRep.obterPorNomeUsuario(nomeUsuario);
 	}
 
-	
-
-
-	
-	
-	
-	
-	
-	
-
-	
+	@Override
+	public void deletarProduto(long id) {
+		produtoRep.deleteById(id);
+	}
 
 
 }

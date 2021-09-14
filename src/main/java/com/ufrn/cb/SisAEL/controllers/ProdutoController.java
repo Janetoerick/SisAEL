@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
+
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Sala;
+import com.ufrn.cb.SisAEL.entity.Impl.Equipamento;
+import com.ufrn.cb.SisAEL.entity.Impl.Laboratorio;
+import com.ufrn.cb.SisAEL.entity.Impl.Sala;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public abstract class ProdutoController{
 	
 	@Autowired
-	FachadaService fachada;
+	protected FachadaService fachada;
 	
 	@GetMapping
 	public ResponseEntity<List<Produto>> listar(){
