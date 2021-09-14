@@ -48,7 +48,7 @@ public class ReservaService {
 		Reserva dados = fachada.salvarReserva(reserva);
 		List<Produto> produtos = reserva.getProdutos();
 		for (Produto produto : produtos) {
-			produto.setDisponivel(false);
+			produto.setDisponivel(true);
 		}
 		return dados;
 		

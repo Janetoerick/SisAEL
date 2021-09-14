@@ -17,14 +17,11 @@ public class VerificadorDeReservaLab extends VerificadorDeReserva{
 	protected boolean verificarDisponibilidade(Reserva reserva) {
 		
 		List<Produto> produtos = reserva.getProdutos();
-		if(produtos.size()!=3) {
-			throw new DadosInvalidosException("A reserva tem que ter três itens");
-		}
 		
 		for (Produto produto : produtos) {
 			
-			if(produto.isDisponivel()) {
-				throw new ReservaException("Produto indisponível" + produto.getEstoque().getNome());
+			if(!produto.isDisponivel()) {
+				throw new ReservaException("Produto indisponível: " + produto.getEstoque().getNome());
 			}
 		}
 		

@@ -21,6 +21,8 @@ public interface FachadaService {
 	public float calcularValorReserva(Reserva reserva);
 	
 	public Cliente obterCliente(String nomeUsuario);
+	
+	public Cliente obterCliente(long id);
 
 	public Cliente cadastrarCliente(Cliente pesquisador);
 	
@@ -33,6 +35,8 @@ public interface FachadaService {
 	public Produto cadastrarProduto(Produto produto);
 	
 	public Produto atualizarProduto(Produto produto);
+	
+	public Produto obterProduto(long id);
 	
 	public List<Produto> listarProdutos();
 	
@@ -54,16 +58,10 @@ public interface FachadaService {
 	
 	public Horario cadastrarHorario(Horario horario);
 	
+	public Horario obterHorario(long id);
+	
 	public List<Horario> listarHorarios();
 	
 	public void deletarHorario(long id);
 	
-	
-	
-	
-	
-	
-	
-	
-
 }
