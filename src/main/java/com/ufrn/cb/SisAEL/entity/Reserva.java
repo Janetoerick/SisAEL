@@ -23,7 +23,6 @@ public class Reserva {
 	private double valor;
 	
 	@ManyToMany
-	@JoinColumn(name="id_equipamento")
 	private List<Produto> produtos;
 	
 	@ManyToOne

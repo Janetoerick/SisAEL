@@ -31,6 +31,8 @@ public interface FachadaDados {
 	
 	public void atualizarProduto(Produto produto);
 	
+	public void atualizarDisponibilidadeProduto(long id, boolean disponivel);
+	
 	public List<Produto> listarProdutos();
 	
 	public List<Produto> listarProdutos(long idEstoque);

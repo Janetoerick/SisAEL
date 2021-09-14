@@ -22,7 +22,7 @@ public class Produto {
 	
 	private boolean disponivel;
 	
-	@ManyToOne(cascade = CascadeType.REFRESH)
+	@ManyToOne
 	private Estoque estoque;
 
 	
@@ -38,8 +38,8 @@ public class Produto {
 		return estoque;
 	}
 	
-	public void setEstoque(Estoque tipo) {
-		this.estoque = tipo;
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
 	}
 
 	public boolean isDisponivel() {

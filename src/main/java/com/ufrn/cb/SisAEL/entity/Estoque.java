@@ -21,16 +21,6 @@ public class Estoque {
 	
 	private int quantidade;
 	
-	
-	public Estoque() {
-		super();
-	}
-
-	public Estoque(String nome, int quantidade) {
-		super();
-		this.nome = nome;
-		this.quantidade = quantidade;
-	}
 
 	public Long getId() {
 		return id;
