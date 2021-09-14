@@ -6,16 +6,15 @@ import javax.persistence.Entity;
 @Entity
 public class Equipamento extends Produto{
 
-	@Column(unique = true)
-	private Long tombamento;
+	@Column(unique = true, nullable = false)
+	private long tombamento;
 
-	public Long getTombamento() {
+	public long getTombamento() {
 		return tombamento;
 	}
 
 	public void setTombamento(Long tombamento) {
 		this.tombamento = tombamento;
 	}
-	
 	
 }

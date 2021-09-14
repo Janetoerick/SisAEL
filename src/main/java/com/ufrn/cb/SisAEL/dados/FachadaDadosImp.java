@@ -82,6 +82,11 @@ public class FachadaDadosImp implements FachadaDados {
 		
 		produtoRep.save(produto);
 	}
+	
+	public void atualizarDisponibilidadeProduto(long id, boolean disponivel) {
+		
+		produtoRep.atualizarDisponibilidadeProduto(id, disponivel);
+	}
 
 	@Override
 	public List<Produto> listarProdutos() {

@@ -23,14 +23,13 @@ public class Reserva {
 	private double valor;
 	
 	@ManyToMany
-	@JoinColumn(name="id_equipamento")
 	private List<Produto> produtos;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Horario horario;
 		
 

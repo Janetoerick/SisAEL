@@ -24,6 +24,7 @@ public class EquipamentoController extends Controller {
 		
 		Equipamento response = (Equipamento) fachada
 				.cadastrarProduto(equipamento);
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 	
