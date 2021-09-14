@@ -15,19 +15,19 @@ import com.ufrn.cb.SisAEL.entity.Impl.Sala;
 public class ProdutoControllerImpl extends ProdutoController{
 
 	@PostMapping("/cadastrar/Equipamento")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Equipamento item){
+	public ResponseEntity<Produto> cadastrarEquipamento(@RequestBody Equipamento item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}
 	
 	@PostMapping("/cadastrar/Sala")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Sala item){
+	public ResponseEntity<Produto> cadastrarSala(@RequestBody Sala item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}
 	
-	@PostMapping("/cadastrar/Equipamento")
-	public ResponseEntity<Produto> cadastrar(@RequestBody Laboratorio item){
+	@PostMapping("/cadastrar/Lab")
+	public ResponseEntity<Produto> cadastrarLab(@RequestBody Laboratorio item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}

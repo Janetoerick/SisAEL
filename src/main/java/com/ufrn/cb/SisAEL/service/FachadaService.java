@@ -16,7 +16,6 @@ public interface FachadaService {
 	
 	public List<Reserva> listarReservas();
 	
-	
 	public void cancelarReserva(long id);
 	
 	public float calcularValorReserva(Reserva reserva);
@@ -38,6 +37,8 @@ public interface FachadaService {
 	public List<Produto> listarProdutos();
 	
 	public List<Produto> listarProdutos(long idEstoque);
+	
+	public void deletarProduto(long id);
 	
 	public Estoque cadastrarEstoque(Estoque estoque);
 	
