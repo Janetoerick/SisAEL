@@ -14,46 +14,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Quarto;
+import com.ufrn.cb.SisAEL.entity.Mesa;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @RestController
-@RequestMapping("/quartos")
-public class QuartoController extends Controller {
+@RequestMapping("/mesas")
+public class MesaController extends Controller {
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Quarto> cadastrar(@RequestBody Quarto equipamento) {
+	public ResponseEntity<Mesa> cadastrar(@RequestBody Mesa mesa) {
 		
-		Quarto response = (Quarto) fachada
-				.cadastrarProduto(equipamento);
+		Mesa response = (Mesa) fachada
+				.cadastrarProduto(mesa);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 	
 
 	@GetMapping
-	public ResponseEntity<List<Quarto>> listar(){
+	public ResponseEntity<List<Produto>> listar(){
 		
 		List<Produto> produtos = fachada.listarProdutos();
-		ArrayList<Quarto> equipamentos = new ArrayList<Quarto>();
-		for(Produto produto:produtos) {
-			if(produto instanceof Quarto) {
-				equipamentos.add((Quarto) produto);
-			}
-		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(equipamentos);
+		return ResponseEntity.status(HttpStatus.OK).body(produtos);
 	}
 	
 	@PutMapping("/atualizar")
-	public ResponseEntity<Quarto> atualizar(@RequestBody Quarto quarto){
+	public ResponseEntity<Mesa> atualizar(@RequestBody Mesa quarto){
 		
-		Quarto produto = (Quarto) fachada.atualizarProduto(quarto);
+		Mesa produto = (Mesa) fachada.atualizarProduto(quarto);
 		
 		return ResponseEntity.status(HttpStatus.OK).body(produto);
 		
 	}
 	
-	public ResponseEntity<Quarto> deletar(@PathVariable long id){
+	public ResponseEntity<Mesa> deletar(@PathVariable long id){
 		
 		fachada.deletarProduto(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);

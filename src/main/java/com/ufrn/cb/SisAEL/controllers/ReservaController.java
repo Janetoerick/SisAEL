@@ -1,6 +1,7 @@
 package com.ufrn.cb.SisAEL.controllers;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.ufrn.cb.SisAEL.entity.Quarto;
-import com.ufrn.cb.SisAEL.entity.HorarioHotel;
-import com.ufrn.cb.SisAEL.entity.ClienteHotel;
+import com.ufrn.cb.SisAEL.entity.Mesa;
+import com.ufrn.cb.SisAEL.entity.HorarioRestaurante;
+import com.ufrn.cb.SisAEL.entity.ClienteRestaurante;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 
@@ -24,27 +25,27 @@ public class ReservaController extends Controller{
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestParam Long idCliente, 
-			@RequestParam String idQuarto, String dataInicial, String dataFinal){
+			@RequestParam String idMesa, long idHorario){
 		
 		Reserva reserva = new Reserva();
 		
-		ArrayList<Produto> quartos = new ArrayList<Produto>();
-		Quarto quarto = new Quarto();
-		quarto.setId(Integer.parseInt(idQuarto));
-		quartos.add(quarto);
+		ArrayList<Produto> mesas = new ArrayList<Produto>();
+		Mesa quarto = new Mesa();
+		quarto.setId(Integer.parseInt(idMesa));
+		mesas.add(quarto);
 		
-		LocalDate dtInicial = LocalDate.parse(dataInicial);
-		LocalDate dtFinal = LocalDate.parse(dataFinal);
+		HorarioRestaurante  horarioRestaurante = (HorarioRestaurante )fachada
+				.obterHorario(idHorario);
 		
-		HorarioHotel horario = new HorarioHotel();
-		horario.setDataInicial(dtInicial);
-		horario.setDataFinal(dtFinal);
+		//LocalDate dtReserva = LocalDate.parse(data);
+		//LocalTime horaReserva = LocalTime.parse(hora);
+
 		
-		reserva.setProdutos(quartos);
-		ClienteHotel pesquisador = new ClienteHotel();
-		pesquisador.setId(idCliente);
-		reserva.setCliente(pesquisador);
-		reserva.setHorario(horario);
+		reserva.setProdutos(mesas);
+		ClienteRestaurante cliente = new ClienteRestaurante();
+		cliente.setId(idCliente);
+		reserva.setCliente(cliente);
+		reserva.setHorario(horarioRestaurante);
 		
 		
 		

@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.ClienteHotel;
+import com.ufrn.cb.SisAEL.entity.ClienteRestaurante;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteHotelController extends Controller {
+public class ClienteRestauranteController extends Controller {
 	
 	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Cliente> obter
@@ -26,30 +27,38 @@ public class ClienteHotelController extends Controller {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<ClienteHotel> cadastrar(@RequestBody ClienteHotel clienteHotel){
+	public ResponseEntity<ClienteRestaurante> cadastrar(@RequestBody ClienteRestaurante clienteRestaurante){
 		
-		ClienteHotel p = (ClienteHotel) fachada.cadastrarCliente(clienteHotel);
+		ClienteRestaurante p = (ClienteRestaurante) fachada.cadastrarCliente(clienteRestaurante);
 		return ResponseEntity.status(HttpStatus.CREATED).body(p);
 		
 	}
 	
 	@PostMapping("/atualizar")
-	public ResponseEntity<ClienteHotel> atualizar(@RequestBody ClienteHotel clienteHotel){
+	public ResponseEntity<ClienteRestaurante> atualizar(@RequestBody ClienteRestaurante clienteRestaurante){
 		
-		fachada.atualizarCliente(clienteHotel);
-		return ResponseEntity.status(HttpStatus.OK).body(clienteHotel);
+		fachada.atualizarCliente(clienteRestaurante);
+		return ResponseEntity.status(HttpStatus.OK).body(clienteRestaurante);
 		
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Cliente>> listar(){
+	public ResponseEntity<List<ClienteRestaurante>> listar(){
 		List<Cliente> clientes = fachada.listarClientes();
-		return ResponseEntity.status(HttpStatus.OK).body(clientes);
+		ArrayList<ClienteRestaurante> clientesRestaurante = 
+				new ArrayList<ClienteRestaurante>();
+		
+		for(Cliente cliente:clientes) {
+			
+			clientesRestaurante.add((ClienteRestaurante) cliente);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(clientesRestaurante);
 		
 	}
 	
 	@DeleteMapping("remover/{id}")
-	public ResponseEntity<Cliente> deletar(long id){
+	public ResponseEntity<ClienteRestaurante> deletar(long id){
 		fachada.deletarCliente(id);
 		return ResponseEntity.ok(null);
 		
