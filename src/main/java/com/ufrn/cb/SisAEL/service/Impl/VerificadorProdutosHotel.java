@@ -14,10 +14,12 @@ public class VerificadorProdutosHotel extends VerificadorProdutos {
 
 	@Override
 	public boolean verificar(List<Produto> produtos) {
+		
+		List<Produto> quartos = fachada.listarProdutos();
 		for (Produto p : produtos) {
 			Quarto q = (Quarto) p;
-			if (q.getQtdPessoas() <= 0 || q.getQtdPessoas() >= 10 || q.getQtdCamas() <= 0 || q.getQtdCamas() >= 6) {
-				throw new DadosInvalidosException("Dados de quantidade invalidos no produto " + q.getId());
+			if (!quartos.contains(q)) {
+				throw new DadosInvalidosException("Produto " + q.getId() + " nao encontrado!!");
 			}
 		}
 		return true;
