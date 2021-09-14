@@ -52,8 +52,6 @@ public class FachadaServiceImpl implements FachadaService{
 	
 	@Override
 	public Reserva cadastrarReserva(Reserva reserva) {
-		
-		
 		return reservaService.cadastrar(reserva);
 	}
 	
@@ -182,6 +180,21 @@ public class FachadaServiceImpl implements FachadaService{
 	public void deletarProduto(long id) {
 		produtoService.remover(id);
 		
+	}
+
+	@Override
+	public Cliente obterCliente(long id) {
+		return clienteService.obter(id);
+	}
+
+	@Override
+	public Produto obterProduto(long id) {
+		return produtoService.obter(id);
+	}
+
+	@Override
+	public Horario obterHorario(long id) {
+		return horarioService.obter(id);
 	}
 
 }

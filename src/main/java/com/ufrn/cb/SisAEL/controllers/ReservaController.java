@@ -20,14 +20,39 @@ import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
+import com.ufrn.cb.SisAEL.entity.Impl.ClienteRestaurante;
+import com.ufrn.cb.SisAEL.entity.Impl.HorarioRestaurante;
+import com.ufrn.cb.SisAEL.entity.Impl.Mesa;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
-@RequestMapping(value="/reservas")
+@RequestMapping("/reservas")
 public abstract class ReservaController {
 	
 	@Autowired
 	protected FachadaService fachada;
+	
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Reserva> cadastrar(@RequestParam(value="idCliente") String idCliente, 
+			@RequestParam(value="idHorario") String idHorario, @RequestParam(value="idProduto") String idProduto){
+		
+		
+		Cliente cliente = fachada.obterCliente(Long.parseLong(idCliente));
+		
+		Horario horario = fachada.obterHorario(Long.parseLong(idHorario));
+		
+		Produto mesa = fachada.obterProduto(Long.parseLong(idProduto));
+		List<Produto> mesas = new ArrayList<>();
+		mesas.add(mesa);
+		
+		Reserva reserva = new Reserva();
+		reserva.setCliente(cliente);
+		reserva.setHorario(horario);
+		reserva.setProdutos(mesas);
+		
+		Reserva dados = fachada.cadastrarReserva(reserva);
+		return ResponseEntity.status(HttpStatus.CREATED).body(dados);
+	}
 	
 	@GetMapping
 	public ResponseEntity<List<Reserva>> listar(){

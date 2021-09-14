@@ -19,8 +19,8 @@ public class VerificadorDeReservaRestaurante extends VerificadorDeReserva{
 		List<Produto> produtos = reserva.getProdutos();
 		
 		for (Produto produto : produtos) {
-			if(produto.isDisponivel()) {
-				throw new ReservaException("Produto indisponível" + produto.getEstoque().getNome());
+			if(!produto.isDisponivel()) {
+				throw new ReservaException("Produto indisponível " + produto.getEstoque().getNome());
 			}
 		}
 		

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Admin;
@@ -62,8 +63,8 @@ public class FachadaDadosImpl implements FachadaDados {
 		reservaRep.save(reserva);
 	}
 	
+	@Override
 	public void deletarReserva(long id) {
-		
 		reservaRep.deleteById(id);
 	}
 
@@ -161,7 +162,6 @@ public class FachadaDadosImpl implements FachadaDados {
 
 	@Override
 	public void deletarHorario(long id) {
-		// TODO Auto-generated method stub
 		horarioRep.deleteById(id);
 	}
 
@@ -181,6 +181,17 @@ public class FachadaDadosImpl implements FachadaDados {
 	public void deletarProduto(long id) {
 		produtoRep.deleteById(id);
 	}
+
+	@Override
+	public Optional<Cliente> obterCliente(long id) {
+		return clienteRep.findById(id);
+	}
+
+	@Override
+	public Optional<Horario> obterHorario(long id) {
+		return horarioRep.findById(id);
+	}
+
 
 
 }
