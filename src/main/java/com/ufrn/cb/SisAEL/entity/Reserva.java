@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Reserva")
+@Table(name="Reservas")
 public class Reserva {
 	
 	@Id
@@ -27,7 +27,7 @@ public class Reserva {
 	private List<Produto> produtos;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_reservante")
+	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
 	@ManyToOne
@@ -56,8 +56,8 @@ public class Reserva {
 		return cliente;
 	}
 
-	public void setCliente(Cliente reservante) {
-		this.cliente = reservante;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	public Horario getHorario() {
