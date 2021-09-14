@@ -27,23 +27,26 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
 @RequestMapping("/reservas")
-public abstract class ReservaController {
+public class ReservaController {
 	
 	@Autowired
 	protected FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestParam(value="idCliente") String idCliente, 
-			@RequestParam(value="idHorario") String idHorario, @RequestParam(value="idProduto") String idProduto){
+			@RequestParam(value="idHorario") String idHorario, @RequestParam(value="idProduto") String[] idProduto){
 		
 		
 		Cliente cliente = fachada.obterCliente(Long.parseLong(idCliente));
 		
 		Horario horario = fachada.obterHorario(Long.parseLong(idHorario));
 		
-		Produto mesa = fachada.obterProduto(Long.parseLong(idProduto));
 		List<Produto> mesas = new ArrayList<>();
-		mesas.add(mesa);
+		for(String s: idProduto) {
+			Produto produto = fachada.obterProduto(Long.parseLong(s));
+			mesas.add(produto);
+		}
+		
 		
 		Reserva reserva = new Reserva();
 		reserva.setCliente(cliente);
