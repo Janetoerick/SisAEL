@@ -8,13 +8,11 @@ import javax.persistence.Entity;
 import com.ufrn.cb.SisAEL.entity.Horario;
 
 @Entity
-public class HorarioLaboratorio extends Horario{
+public class HorarioRestaurante extends Horario{
 	
 	private LocalDate data;
 	
-	private LocalTime horaInicial;
-	
-	private LocalTime horaFinal;
+	private LocalTime hora;
 
 	public LocalDate getData() {
 		return data;
@@ -24,20 +22,14 @@ public class HorarioLaboratorio extends Horario{
 		this.data = data;
 	}
 
-	public LocalTime getHoraInicial() {
-		return horaInicial;
+	public LocalTime getHora() {
+		return hora;
 	}
 
-	public void setHoraInicial(LocalTime horaInicial) {
-		this.horaInicial = horaInicial;
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
 	}
-
-	public LocalTime getHoraFinal() {
-		return horaFinal;
-	}
-
-	public void setHoraFinal(LocalTime horaFinal) {
-		this.horaFinal = horaFinal;
-	}
+	
+	
 	
 }

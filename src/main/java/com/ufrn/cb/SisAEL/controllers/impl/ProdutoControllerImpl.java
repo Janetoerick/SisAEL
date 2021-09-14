@@ -7,27 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ufrn.cb.SisAEL.controllers.ProdutoController;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Impl.Equipamento;
-import com.ufrn.cb.SisAEL.entity.Impl.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Impl.Sala;
+import com.ufrn.cb.SisAEL.entity.Impl.Mesa;
 
 @RestController
 public class ProdutoControllerImpl extends ProdutoController{
 
-	@PostMapping("/cadastrar/Equipamento")
-	public ResponseEntity<Produto> cadastrarEquipamento(@RequestBody Equipamento item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
-	
-	@PostMapping("/cadastrar/Sala")
-	public ResponseEntity<Produto> cadastrarSala(@RequestBody Sala item){
-		return ResponseEntity.ok(fachada.cadastrarProduto(item));
-		
-	}
-	
-	@PostMapping("/cadastrar/Lab")
-	public ResponseEntity<Produto> cadastrarLab(@RequestBody Laboratorio item){
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Produto> cadastrarEquipamento(@RequestBody Mesa item){
 		return ResponseEntity.ok(fachada.cadastrarProduto(item));
 		
 	}

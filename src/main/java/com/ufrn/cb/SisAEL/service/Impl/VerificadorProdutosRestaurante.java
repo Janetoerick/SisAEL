@@ -9,13 +9,13 @@ import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.service.VerificadorProdutos;
 
 @Service
-public class VerificadorProdutosLab extends VerificadorProdutos {
+public class VerificadorProdutosRestaurante extends VerificadorProdutos {
 
 	@Override
 	public boolean verificar(List<Produto> produtos) {
 		for (Produto p : produtos) {
 			if(fachada.obterProduto(p.getId()).isEmpty()) {
-				throw new DadosInvalidosException("Id de produto invalido!");
+				throw new DadosInvalidosException("Id de Mesa invalido!");
 			}
 		}
 		return true;

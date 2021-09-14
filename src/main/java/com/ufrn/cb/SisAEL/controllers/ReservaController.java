@@ -1,6 +1,5 @@
 package com.ufrn.cb.SisAEL.controllers;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,19 +9,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ufrn.cb.SisAEL.entity.Cliente;
+import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Impl.Equipamento;
-import com.ufrn.cb.SisAEL.entity.Impl.HorarioLaboratorio;
-import com.ufrn.cb.SisAEL.entity.Impl.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Impl.Pesquisador;
-import com.ufrn.cb.SisAEL.entity.Impl.Sala;
+import com.ufrn.cb.SisAEL.entity.Impl.ClienteRestaurante;
+import com.ufrn.cb.SisAEL.entity.Impl.HorarioRestaurante;
+import com.ufrn.cb.SisAEL.entity.Impl.Mesa;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
@@ -30,35 +30,26 @@ import com.ufrn.cb.SisAEL.service.FachadaService;
 public class ReservaController {
 	
 	@Autowired
-	FachadaService fachada;
+	protected FachadaService fachada;
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestParam Long idCliente, 
-			@RequestParam String idHorario, @RequestParam String idEquipamento,
-			String idLaboratorio, String idSala){
+			@RequestParam String idHorario, @RequestParam String idMesa){
 		
 		Reserva reserva = new Reserva();
-		HorarioLaboratorio horarioLab = new HorarioLaboratorio();
-		horarioLab.setId(Long.parseLong(idHorario));
+		Horario horario = new Horario();
+		horario.setId(Long.parseLong(idHorario));
 		List<Produto> produtos = new ArrayList<Produto>();
 		
-		Equipamento equipamento = new Equipamento();
-		equipamento.setId(Integer.parseInt(idEquipamento));
-		produtos.add(equipamento);
-		
-		Laboratorio laboratorio = new Laboratorio();
-		laboratorio.setId(Long.parseLong(idLaboratorio));
-		produtos.add(laboratorio);
-		
-		Sala sala = new Sala();
-		sala.setId(Long.parseLong(idSala));
-		produtos.add(sala);
+		Produto p = new Produto();
+		p.setId(Integer.parseInt(idMesa));
+		produtos.add(p);
 		
 		reserva.setProdutos(produtos);
-		Pesquisador pesquisador = new Pesquisador();
-		pesquisador.setId(idCliente);
-		reserva.setCliente(pesquisador);
-		reserva.setHorario(horarioLab);
+		Cliente cliente = new Cliente();
+		cliente.setId(idCliente);
+		reserva.setCliente(cliente);
+		reserva.setHorario(horario);
 		
 		
 		
@@ -75,7 +66,7 @@ public class ReservaController {
 	}
 	
 	@DeleteMapping("/deletar/{id}")
-	public ResponseEntity<Reserva> cancelarReserva(long id){
+	public ResponseEntity<Reserva> cancelarReserva(@PathVariable(name="id") long id){
 		
 		fachada.cancelarReserva(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
@@ -84,16 +75,8 @@ public class ReservaController {
 	
 	@GetMapping(value="/calcular")
 	public float consultarValor(@RequestBody Reserva reserva) {
-		System.out.println(reserva.getHorario());
 
-		//HorarioHotel h = (HorarioHotel) reserva.getHorario();
-		//HorarioHotel h = (HorarioHotel) reserva.getHorario();
-		//h.setDataInicial(data);
-		//h.setDataFinal(data);
-		//reserva.setHorario(h);
-		//float valor = fachada.calcularValorReserva(reserva);
-		//System.out.println("reserva: "+ reserva );
-		return 1;
+		return fachada.calcularValorReserva(reserva);
 	}
 	
 

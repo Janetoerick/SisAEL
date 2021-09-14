@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Entity
-public class Equipamento extends Produto{
+public class Mesa extends Produto{
 
-	private Long tombamento;
+	private int qntLugares;
 
-	public Long getTombamento() {
-		return tombamento;
+	public int getQntLugares() {
+		return qntLugares;
 	}
 
-	public void setTombamento(Long tombamento) {
-		this.tombamento = tombamento;
+	public void setQntLugares(int qntLugares) {
+		this.qntLugares = qntLugares;
 	}
+	
 	
 	
 }

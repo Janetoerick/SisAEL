@@ -5,24 +5,20 @@ import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Impl.HorarioLaboratorio;
+import com.ufrn.cb.SisAEL.entity.Impl.HorarioRestaurante;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
 import com.ufrn.cb.SisAEL.service.VerificadorDeReserva;
 
 @Service
-public class VerificadorDeReservaLab extends VerificadorDeReserva{
+public class VerificadorDeReservaRestaurante extends VerificadorDeReserva{
 
 	@Override
 	protected boolean verificarDisponibilidade(Reserva reserva) {
 		
 		List<Produto> produtos = reserva.getProdutos();
-		if(produtos.size()!=3) {
-			throw new DadosInvalidosException("A reserva tem que ter três itens");
-		}
 		
 		for (Produto produto : produtos) {
-			
 			if(produto.isDisponivel()) {
 				throw new ReservaException("Produto indisponível" + produto.getEstoque().getNome());
 			}
@@ -31,16 +27,13 @@ public class VerificadorDeReservaLab extends VerificadorDeReserva{
 		List<Reserva> reservas = fachada.listarReservas();
 		
 		for (Reserva r : reservas) {
-			HorarioLaboratorio horario = (HorarioLaboratorio) r.getHorario();
+			HorarioRestaurante horario = (HorarioRestaurante) r.getHorario();
 			for (int i = 0; i < reserva.getProdutos().size(); i++) {
 				if(r.getProdutos().contains(reserva.getProdutos().get(i))) {
-					HorarioLaboratorio horario_t = (HorarioLaboratorio) reserva.getHorario();
+					HorarioRestaurante horario_t = (HorarioRestaurante) reserva.getHorario();
 					if(horario.getData().isEqual(horario_t.getData())) {
-						if(!horario.getHoraInicial().isAfter(horario_t.getHoraFinal()) && !horario.getHoraFinal().isBefore(horario_t.getHoraFinal())
-								|| !horario.getHoraInicial().isAfter(horario_t.getHoraInicial()) && !horario.getHoraFinal().isBefore(horario_t.getHoraInicial())
-								|| !horario.getHoraInicial().isBefore(horario_t.getHoraInicial()) && !horario.getHoraFinal().isAfter(horario_t.getHoraFinal())) {
-							throw new ReservaException("Produto " + reserva.getProdutos().get(i).getId() + " indisponível no horario"); 
-							
+						if(horario.getHora().equals(horario_t.getHora())) {
+							throw new ReservaException("Mesa " + reserva.getProdutos().get(i).getId() + " indisponível no horario"); 
 						}	
 					}
 				}

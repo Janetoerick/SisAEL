@@ -5,30 +5,11 @@ import javax.persistence.Entity;
 import com.ufrn.cb.SisAEL.entity.Cliente;
 
 @Entity
-public class Pesquisador extends Cliente {
-	
-	private Long matricula;
-	
-	private String nome;
+public class ClienteRestaurante extends Cliente {
 	
 	private String email;
 	
-
-	public Long getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+	private String telefone;
 
 	public String getEmail() {
 		return email;
@@ -38,8 +19,15 @@ public class Pesquisador extends Cliente {
 		this.email = email;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
 
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 	
+
 	
 
 }

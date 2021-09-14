@@ -6,11 +6,10 @@ import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.service.CalculoValorReserva;
 
 @Service
-public class CalculoValorReservaLab extends CalculoValorReserva {
+public class CalculoValorReservaRestaurante extends CalculoValorReserva {
 	
 	public float calcular(Reserva reserva) {
-		
-		return 0;
+		return 10;
 	}
 
 }
