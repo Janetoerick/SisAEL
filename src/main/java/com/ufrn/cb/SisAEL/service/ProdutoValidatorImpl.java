@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.Equipamento;
 import com.ufrn.cb.SisAEL.entity.Laboratorio;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.entity.Sala;
 
 @Service
 public class ProdutoValidatorImpl extends ProdutoValidator{

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
 import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Produto;
-import com.ufrn.cb.SisAEL.exception.DadosIncompletosException;
 import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 
 @Service

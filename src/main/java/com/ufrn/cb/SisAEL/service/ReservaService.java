@@ -67,7 +67,6 @@ public class ReservaService {
 	}
 	
 	public float calcularValor(Reserva reserva) {
-		
 		return calculoValorReserva.calcular(reserva);
 	}
 

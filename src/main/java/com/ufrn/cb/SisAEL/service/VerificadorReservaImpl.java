@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.exception.DadosInvalidosException;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
 
 @Service
@@ -22,7 +21,6 @@ public class VerificadorReservaImpl extends VerificadorReserva{
 				throw new ReservaException("Produto indisponível");
 			}
 		}
-		
 		List<Reserva> reservas = fachada.listarReservas();
 		
 		for (Reserva r : reservas) {
