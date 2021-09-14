@@ -21,7 +21,6 @@ import com.ufrn.cb.SisAEL.entity.Cliente;
 import com.ufrn.cb.SisAEL.entity.Horario;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Sala;
 import com.ufrn.cb.SisAEL.service.FachadaService;
 
 @RestController
