@@ -33,7 +33,6 @@ public class ReservaController {
 	public ResponseEntity<Reserva> cadastrar(@RequestParam(value="idCliente") String idCliente, 
 			@RequestParam(value="idHorario") String idHorario, @RequestParam(value="idProduto") String[] idProduto){
 		
-		
 		Cliente cliente = fachada.obterCliente(Long.parseLong(idCliente));
 		
 		Horario horario = fachada.obterHorario(Long.parseLong(idHorario));
