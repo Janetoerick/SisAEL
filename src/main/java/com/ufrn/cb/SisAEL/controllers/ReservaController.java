@@ -1,5 +1,6 @@
 package com.ufrn.cb.SisAEL.controllers;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.http.HttpStatus;
@@ -11,13 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.ufrn.cb.SisAEL.entity.Equipamento;
-import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
-import com.ufrn.cb.SisAEL.entity.Laboratorio;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
+import com.ufrn.cb.SisAEL.entity.Quarto;
+import com.ufrn.cb.SisAEL.entity.HorarioHotel;
+import com.ufrn.cb.SisAEL.entity.ClienteHotel;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
-import com.ufrn.cb.SisAEL.entity.Sala;
 
 @RestController
 @RequestMapping(value="/reservas")
@@ -25,31 +24,27 @@ public class ReservaController extends Controller{
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<Reserva> cadastrar(@RequestParam Long idCliente, 
-			@RequestParam String idHorario, @RequestParam String idEquipamento,
-			String idLaboratorio, String idSala){
+			@RequestParam String idQuarto, String dataInicial, String dataFinal){
 		
 		Reserva reserva = new Reserva();
 		
-		HorarioLaboratorio horarioLab = (HorarioLaboratorio) fachada.obterHorario(Long.parseLong(idHorario));
-		List<Produto> produtos = new ArrayList<Produto>();
+		ArrayList<Produto> quartos = new ArrayList<Produto>();
+		Quarto quarto = new Quarto();
+		quarto.setId(Integer.parseInt(idQuarto));
+		quartos.add(quarto);
 		
-		Equipamento equipamento = new Equipamento();
-		equipamento.setId(Integer.parseInt(idEquipamento));
-		produtos.add(equipamento);
+		LocalDate dtInicial = LocalDate.parse(dataInicial);
+		LocalDate dtFinal = LocalDate.parse(dataFinal);
 		
-		Laboratorio laboratorio = new Laboratorio();
-		laboratorio.setId(Long.parseLong(idLaboratorio));
-		produtos.add(laboratorio);
+		HorarioHotel horario = new HorarioHotel();
+		horario.setDataInicial(dtInicial);
+		horario.setDataFinal(dtFinal);
 		
-		Sala sala = new Sala();
-		sala.setId(Long.parseLong(idSala));
-		produtos.add(sala);
-		
-		reserva.setProdutos(produtos);
-		Pesquisador pesquisador = new Pesquisador();
+		reserva.setProdutos(quartos);
+		ClienteHotel pesquisador = new ClienteHotel();
 		pesquisador.setId(idCliente);
 		reserva.setCliente(pesquisador);
-		reserva.setHorario(horarioLab);
+		reserva.setHorario(horario);
 		
 		
 		

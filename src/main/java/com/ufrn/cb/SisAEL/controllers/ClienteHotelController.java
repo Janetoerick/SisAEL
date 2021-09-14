@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.ufrn.cb.SisAEL.entity.Cliente;
-import com.ufrn.cb.SisAEL.entity.Pesquisador;
+import com.ufrn.cb.SisAEL.entity.ClienteHotel;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteControllerLab extends Controller {
+public class ClienteHotelController extends Controller {
 	
 	@GetMapping("/{nomeUsuario}")
 	public ResponseEntity<Cliente> obter
@@ -26,18 +26,18 @@ public class ClienteControllerLab extends Controller {
 	}
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Pesquisador> cadastrar(@RequestBody Pesquisador pesquisador){
+	public ResponseEntity<ClienteHotel> cadastrar(@RequestBody ClienteHotel clienteHotel){
 		
-		Pesquisador p = (Pesquisador) fachada.cadastrarCliente(pesquisador);
+		ClienteHotel p = (ClienteHotel) fachada.cadastrarCliente(clienteHotel);
 		return ResponseEntity.status(HttpStatus.CREATED).body(p);
 		
 	}
 	
 	@PostMapping("/atualizar")
-	public ResponseEntity<Pesquisador> atualizar(@RequestBody Pesquisador pesquisador){
+	public ResponseEntity<ClienteHotel> atualizar(@RequestBody ClienteHotel clienteHotel){
 		
-		fachada.atualizarCliente(pesquisador);
-		return ResponseEntity.status(HttpStatus.OK).body(pesquisador);
+		fachada.atualizarCliente(clienteHotel);
+		return ResponseEntity.status(HttpStatus.OK).body(clienteHotel);
 		
 	}
 	

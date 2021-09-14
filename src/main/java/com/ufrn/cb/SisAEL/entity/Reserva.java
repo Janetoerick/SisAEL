@@ -30,7 +30,7 @@ public class Reserva {
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Horario horario;
 		
 

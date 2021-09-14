@@ -6,56 +6,61 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ufrn.cb.SisAEL.entity.Equipamento;
+import com.ufrn.cb.SisAEL.entity.Quarto;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @RestController
-@RequestMapping("/equipamentos")
-public class EquipamentoController extends Controller {
+@RequestMapping("/quartos")
+public class QuartoController extends Controller {
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Equipamento> cadastrar(@RequestBody Equipamento equipamento) {
+	public ResponseEntity<Quarto> cadastrar(@RequestBody Quarto equipamento) {
 		
-		Equipamento response = (Equipamento) fachada
+		Quarto response = (Quarto) fachada
 				.cadastrarProduto(equipamento);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 	
 
-
 	@GetMapping
-	public ResponseEntity<List<Equipamento>> listar(){
+	public ResponseEntity<List<Quarto>> listar(){
 		
 		List<Produto> produtos = fachada.listarProdutos();
-		ArrayList<Equipamento> equipamentos = new ArrayList<Equipamento>();
+		ArrayList<Quarto> equipamentos = new ArrayList<Quarto>();
 		for(Produto produto:produtos) {
-			if(produto instanceof Equipamento) {
-				equipamentos.add((Equipamento) produto);
+			if(produto instanceof Quarto) {
+				equipamentos.add((Quarto) produto);
 			}
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(equipamentos);
 	}
 	
-	@GetMapping("/{idEstoque}")
-	public ResponseEntity<List<Equipamento>> listar(@RequestParam long idEstoque){
+	@PutMapping("/atualizar")
+	public ResponseEntity<Quarto> atualizar(@RequestBody Quarto quarto){
 		
-		List<Produto> produtos = fachada.listarProdutos();
-		ArrayList<Equipamento> equipamentos = new ArrayList<Equipamento>();
-		for(Produto produto:produtos) {
-			if(produto instanceof Equipamento) {
-				equipamentos.add((Equipamento) produto);
-			}
-		}
+		Quarto produto = (Quarto) fachada.atualizarProduto(quarto);
 		
-		return ResponseEntity.status(HttpStatus.OK).body(equipamentos);		
+		return ResponseEntity.status(HttpStatus.OK).body(produto);
+		
 	}
+	
+	public ResponseEntity<Quarto> deletar(@PathVariable long id){
+		
+		fachada.deletarProduto(id);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+		
+	}
+	
+	
 	
 	
 	

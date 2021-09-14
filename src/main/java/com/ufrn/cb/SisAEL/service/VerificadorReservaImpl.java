@@ -2,7 +2,7 @@ package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.ufrn.cb.SisAEL.entity.HorarioLaboratorio;
+import com.ufrn.cb.SisAEL.entity.HorarioHotel;
 import com.ufrn.cb.SisAEL.entity.Produto;
 import com.ufrn.cb.SisAEL.entity.Reserva;
 import com.ufrn.cb.SisAEL.exception.ReservaException;
@@ -24,7 +24,7 @@ public class VerificadorReservaImpl extends VerificadorReserva{
 		List<Reserva> reservas = fachada.listarReservas();
 		
 		for (Reserva r : reservas) {
-			HorarioLaboratorio horario = (HorarioLaboratorio) r.getHorario();
+			HorarioHotel horario = (HorarioHotel) r.getHorario();
 			if (horario.equals(reserva.getHorario())) {
 				throw new ReservaException("A Reserva para esta "
 						+ "data e horário está indisponível");
