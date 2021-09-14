@@ -1,11 +1,13 @@
 package com.ufrn.cb.SisAEL.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ufrn.cb.SisAEL.dados.FachadaDados;
+import com.ufrn.cb.SisAEL.entity.Estoque;
 import com.ufrn.cb.SisAEL.entity.Produto;
 
 @Service
